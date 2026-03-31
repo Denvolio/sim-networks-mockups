@@ -1,0 +1,595 @@
+<!-- =========================================================
+     Archetype Mockup #1 (A2): Accounting / BPO / Tax
+     Save as: archetype-accounting.html
+========================================================= -->
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SIM-Networks — Облако для бухгалтерии и BPO (A2)</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --bg2:#0f1b33;
+      --card:#0f203f;
+      --card2:#0b1a33;
+      --text:#e8eefc;
+      --muted:#a8b6d8;
+      --accent:#2b6cff;
+      --accent2:#00c2ff;
+      --ok:#31d0aa;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:16px;
+      --radius2:22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue";
+      color:var(--text);
+      background:
+        radial-gradient(900px 700px at 20% 10%, rgba(43,108,255,.35), transparent 60%),
+        radial-gradient(900px 700px at 80% 20%, rgba(0,194,255,.22), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      line-height:1.45;
+    }
+    a{color:inherit}
+    .container{max-width:1100px;margin:0 auto;padding:0 18px}
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.65);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 0;gap:14px;
+    }
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo{
+      width:34px;height:34px;border-radius:10px;
+      background: linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow: 0 8px 20px rgba(43,108,255,.35);
+    }
+    .brand b{font-size:14px;letter-spacing:.3px}
+    .menu{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+    .menu a{
+      text-decoration:none;color:var(--muted);
+      padding:8px 10px;border-radius:10px;
+    }
+    .menu a:hover{background:rgba(255,255,255,.06);color:var(--text)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      gap:10px;text-decoration:none;border:1px solid var(--border);
+      padding:10px 14px;border-radius:12px;
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      box-shadow:none;
+      cursor:pointer;
+    }
+    .btn.primary{
+      border:none;
+      background: linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow: 0 12px 24px rgba(43,108,255,.28);
+    }
+    .btn.small{padding:8px 12px;border-radius:11px;font-size:14px}
+    .hero{padding:46px 0 24px}
+    .hero-grid{
+      display:grid;grid-template-columns: 1.2fr .8fr;gap:18px;align-items:stretch;
+    }
+    .hero h1{font-size:34px;line-height:1.15;margin:0 0 10px}
+    .hero p{margin:0 0 16px;color:var(--muted);font-size:16px}
+    .pill-row{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 0}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 10px;border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      color:var(--muted);font-size:13px;
+    }
+    .pill .dot{width:8px;height:8px;border-radius:99px;background:var(--ok)}
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding:16px;
+      display:flex;flex-direction:column;gap:12px;
+    }
+    .hero-card h3{margin:0;font-size:14px;color:var(--muted);letter-spacing:.3px;text-transform:uppercase}
+    .form{
+      display:grid;gap:10px;
+      grid-template-columns:1fr 1fr;
+    }
+    .form .full{grid-column:1/-1}
+    label{font-size:12px;color:var(--muted)}
+    input, select, textarea{
+      width:100%;
+      margin-top:6px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(11,18,32,.45);
+      color:var(--text);
+      outline:none;
+    }
+    input::placeholder, textarea::placeholder{color:rgba(168,182,216,.65)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:2px}
+    section{padding:26px 0}
+    .section-title{
+      display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+    .section-title h2{margin:0;font-size:22px}
+    .section-title p{margin:0;color:var(--muted);max-width:780px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 22px rgba(0,0,0,.22);
+      padding:14px;
+      min-height: 110px;
+    }
+    .card h4{margin:0 0 6px;font-size:16px}
+    .card p{margin:0;color:var(--muted)}
+    .icon{
+      width:34px;height:34px;border-radius:12px;
+      background:rgba(43,108,255,.18);
+      border:1px solid rgba(43,108,255,.25);
+      display:flex;align-items:center;justify-content:center;
+      margin-bottom:10px;
+      font-weight:700;
+      color:rgba(232,238,252,.95);
+    }
+    .kpi{
+      display:flex;gap:12px;flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .kpi .k{
+      flex:1 1 160px;
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:10px 12px;
+    }
+    .k .num{font-size:18px;font-weight:800}
+    .k .cap{font-size:12px;color:var(--muted)}
+    .split{
+      display:grid;grid-template-columns: 1fr 1fr;gap:12px;
+    }
+    .list{
+      margin:0;padding-left:18px;color:var(--muted);
+    }
+    .list li{margin:6px 0}
+    .bundle{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+    }
+    .price{
+      margin-top:10px;
+      display:flex;align-items:baseline;gap:8px;
+    }
+    .price b{font-size:22px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:rgba(49,208,170,.12);
+      border:1px solid rgba(49,208,170,.25);
+      color:rgba(232,238,252,.95);
+      font-size:12px;
+    }
+    details{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:12px 12px;
+      background:rgba(255,255,255,.03);
+    }
+    details + details{margin-top:10px}
+    summary{cursor:pointer;color:var(--text);font-weight:650}
+    summary::-webkit-details-marker{display:none}
+    footer{
+      padding:24px 0 32px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      background: rgba(11,18,32,.35);
+    }
+    .footgrid{display:grid;grid-template-columns:1.3fr .7fr;gap:12px}
+    .tiny{font-size:12px;color:rgba(168,182,216,.78)}
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid-3,.grid-2,.bundle,.split,.footgrid{grid-template-columns:1fr}
+      .menu{display:none}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="#">
+        <span class="logo" aria-hidden="true"></span>
+        <b>SIM-Networks • Archetype</b>
+      </a>
+      <nav class="menu" aria-label="Навигация">
+        <a href="#why">Почему</a>
+        <a href="#who">Для кого</a>
+        <a href="#pains">Боли → решения</a>
+        <a href="#bundles">Пакеты</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn small" href="#trial">Тест 3 дня</a>
+        <a class="btn primary small" href="#trial">Получить консультацию</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <h1>Облако для бухгалтерии и финансовых данных — безопасно, быстро, в юрисдикции ЕС</h1>
+          <p>
+            Размещайте бухгалтерские системы, архивы и документооборот в немецком дата-центре.
+            Получайте контролируемый доступ для удалённых сотрудников, резервные копии и предсказуемую производительность.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#trial">Попробовать бесплатно 3 дня</a>
+            <a class="btn" href="#bundles">Посмотреть готовые пакеты</a>
+          </div>
+          <div class="pill-row">
+            <span class="pill"><span class="dot"></span> Юрисдикция ЕС / Германия</span>
+            <span class="pill"><span class="dot"></span> Backup Local + Remote</span>
+            <span class="pill"><span class="dot"></span> 2 зоны доступности</span>
+            <span class="pill"><span class="dot"></span> Поддержка 24/7</span>
+          </div>
+
+          <div class="kpi" aria-label="Короткие обещания (не юридические гарантии)">
+            <div class="k">
+              <div class="num">99.9%+</div>
+              <div class="cap">целевой аптайм платформы*</div>
+            </div>
+            <div class="k">
+              <div class="num">&lt; 60 мин</div>
+              <div class="cap">реакция поддержки по SLA*</div>
+            </div>
+            <div class="k">
+              <div class="num">3 дня</div>
+              <div class="cap">бесплатный тест</div>
+            </div>
+          </div>
+          <p class="tiny" style="margin-top:10px">
+            * Точные показатели зависят от выбранной конфигурации и договора SLA. Текст в мокапе — пример.
+          </p>
+        </div>
+
+        <!-- Sticky-looking lead form -->
+        <aside class="hero-card" id="trial">
+          <h3>Тест 3 дня / консультация</h3>
+          <form class="form" action="#" method="post">
+            <div>
+              <label>Имя
+                <input type="text" name="name" placeholder="Иван" />
+              </label>
+            </div>
+            <div>
+              <label>Email
+                <input type="email" name="email" placeholder="ivan@company.com" />
+              </label>
+            </div>
+            <div class="full">
+              <label>Компания / сайт
+                <input type="text" name="company" placeholder="ООО / URL" />
+              </label>
+            </div>
+            <div>
+              <label>Сценарий
+                <select name="scenario">
+                  <option>Хостинг бухгалтерских систем</option>
+                  <option>Удалённые рабочие места (VDI/RDP)</option>
+                  <option>Архив и резервные копии</option>
+                  <option>Миграция в ЕС (from on-prem / hyperscaler)</option>
+                </select>
+              </label>
+            </div>
+            <div>
+              <label>Оценка объёма данных
+                <select name="data">
+                  <option>до 1 TB</option>
+                  <option>1–5 TB</option>
+                  <option>5–20 TB</option>
+                  <option>20+ TB</option>
+                </select>
+              </label>
+            </div>
+            <div class="full">
+              <label>Комментарий
+                <textarea name="msg" rows="3" placeholder="Какие системы/пики нагрузки/требования по доступам?"></textarea>
+              </label>
+            </div>
+            <div class="full actions">
+              <button class="btn primary" type="submit">Запросить тест / звонок</button>
+              <a class="btn" href="#why">Сначала — детали</a>
+            </div>
+            <p class="tiny" style="margin:0">
+              Нажимая «Запросить», вы соглашаетесь на обработку данных для связи по заявке (mockup).
+            </p>
+          </form>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Почему бухгалтерии выбирают европейскую инфраструктуру</h2>
+          <p>6 причин в формате «боль → результат». Это блок, который можно повторять на всех архетипах (как на вашей типовой странице).</p>
+        </div>
+        <a class="btn small" href="#pains">Переход к болям</a>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">1</div>
+          <h4>Непрерывность в отчётные периоды</h4>
+          <p>Архитектура с резервированием и понятными процедурами восстановления.</p>
+        </div>
+        <div class="card">
+          <div class="icon">2</div>
+          <h4>Юрисдикция ЕС / Германии</h4>
+          <p>Локализация данных и прозрачный договорной контур для GDPR/DSGVO.</p>
+        </div>
+        <div class="card">
+          <div class="icon">3</div>
+          <h4>Безопасный удалённый доступ</h4>
+          <p>VPN/сегментация, роли доступа и минимизация «хаоса» remote-работы.</p>
+        </div>
+        <div class="card">
+          <div class="icon">4</div>
+          <h4>Быстрые диски для баз и документов</h4>
+          <p>Выбор storage-tier под нагрузку: документы vs базы с IOPS.</p>
+        </div>
+        <div class="card">
+          <div class="icon">5</div>
+          <h4>Backup Local + Remote</h4>
+          <p>Политики хранения и простая логика «где лежит копия и как восстановиться».</p>
+        </div>
+        <div class="card">
+          <div class="icon">6</div>
+          <h4>Поддержка 24/7</h4>
+          <p>Эскалация к инженерам и SLA на реакцию (в рамках выбранного пакета).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO -->
+  <section id="who">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Для кого эта страница</h2>
+          <p>Короткая ICP-сегментация (как у лучших конкурентных страниц): три понятных профиля с разными триггерами.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h4>Бухгалтерский аутсорс / Steuerberater</h4>
+          <p>10–100 сотрудников, много клиентов, высокий риск утечки, важна доступность в пиковые даты.</p>
+        </div>
+        <div class="card">
+          <h4>Финансовый отдел SMB / Mittelstand</h4>
+          <p>Документооборот, архивы 5–10 лет, строгие роли доступа, отчётные циклы.</p>
+        </div>
+        <div class="card">
+          <h4>Shared Services / BPO</h4>
+          <p>Масштабирование рабочих мест, стандартизация окружений, минимизация IT-штата.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAINS -->
+  <section id="pains">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Боли → решения (Challenge → Benefit)</h2>
+          <p>Этот блок — «сердце» архетипной страницы. Его удобно верстать карточками 2×2 или 3×2.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>Проблема: простой в критический период</h4>
+          <p><b>Решение:</b> 2 зоны доступности + процедуры восстановления + SLA на реакцию.</p>
+        </div>
+        <div class="card">
+          <h4>Проблема: медленная база / «тормозит всё»</h4>
+          <p><b>Решение:</b> storage tier под IOPS + разделение баз/документов + мониторинг.</p>
+        </div>
+        <div class="card">
+          <h4>Проблема: удалённый доступ и безопасность</h4>
+          <p><b>Решение:</b> VPN-туннели, сегментация, роли доступа, принцип least-privilege.</p>
+        </div>
+        <div class="card">
+          <h4>Проблема: риск ransomware / потеря данных</h4>
+          <p><b>Решение:</b> Backup Local+Remote, политики retention, изоляция копий, DR-опция.</p>
+        </div>
+        <div class="card">
+          <h4>Проблема: нет своего IT-админа</h4>
+          <p><b>Решение:</b> Managed assistance: настройка, контроль, обновления базового слоя.</p>
+        </div>
+        <div class="card">
+          <h4>Проблема: миграция страшна и «долго»</h4>
+          <p><b>Решение:</b> 3-шаговый план: оценка → пилот → запуск + чек-лист миграции.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUNDLES -->
+  <section id="bundles">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Готовые пакеты (пример для мокапа)</h2>
+          <p>В стиле вашей витрины «готовых серверов»: 3 предложения с разной глубиной безопасности и резервирования.</p>
+        </div>
+        <span class="badge">Пакеты — пример, цены плейсхолдер</span>
+      </div>
+
+      <div class="bundle">
+        <div class="card">
+          <h4>Accounting Start</h4>
+          <p>Для небольших бюро и теста: документы + базовые процессы.</p>
+          <ul class="list">
+            <li>2–4 vCPU • 8–16 GB RAM</li>
+            <li>Storage: General</li>
+            <li>Backup: Local</li>
+            <li>VPN: опция</li>
+          </ul>
+          <div class="price"><b>€79</b><span class="tiny">/мес*</span></div>
+          <div class="actions">
+            <a class="btn primary" href="#trial">Тест 3 дня</a>
+            <a class="btn" href="#trial">Заказать</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h4>Accounting Pro (Peak)</h4>
+          <p>Для пиков отчётности: базы, повышенные IOPS, удалёнка.</p>
+          <ul class="list">
+            <li>4–8 vCPU • 16–32 GB RAM</li>
+            <li>Storage: IO optimized</li>
+            <li>Backup: Local + Remote</li>
+            <li>VPN + доп. IP: включаем</li>
+          </ul>
+          <div class="price"><b>€169</b><span class="tiny">/мес*</span></div>
+          <div class="actions">
+            <a class="btn primary" href="#trial">Тест 3 дня</a>
+            <a class="btn" href="#trial">Заказать</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h4>Accounting Secure (BPO)</h4>
+          <p>Для BPO: изоляция, строгие роли, расширенные политики копий.</p>
+          <ul class="list">
+            <li>8+ vCPU • 32+ GB RAM</li>
+            <li>Storage: IO + archive tier</li>
+            <li>Backup: Local + Remote + retention</li>
+            <li>Сегментация сетей/подсетей</li>
+          </ul>
+          <div class="price"><b>€349</b><span class="tiny">/мес*</span></div>
+          <div class="actions">
+            <a class="btn primary" href="#trial">Тест 3 дня</a>
+            <a class="btn" href="#trial">Заказать</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="tiny" style="margin-top:10px">
+        *Цены — демонстрационные для мокапа. В реальности можно заменить на «от …» или скрыть за “Request quote”.
+      </p>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section id="trust">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Доверие и эксплуатация</h2>
+          <p>Этот блок лучше держать единым и повторяемым на всех архетипных страницах.</p>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="card">
+          <h4>Дата-центр в Германии</h4>
+          <p>Karlsruhe • отказоустойчивость • резервирование питания/каналов • физическая безопасность.</p>
+          <ul class="list">
+            <li>Локализация данных в ЕС</li>
+            <li>Сегментация сети и доступов</li>
+            <li>Варианты резервирования</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Поддержка 24/7 + SLA</h4>
+          <p>Эскалации, тикеты, контроль реакции, помощь в миграции и сопровождении.</p>
+          <ul class="list">
+            <li>Ответ по SLA (по договору)</li>
+            <li>Помощь с настройкой backup/DR</li>
+            <li>Рекомендации по архитектуре</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>FAQ</h2>
+          <p>Образовательный блок, который снимает возражения и работает как SEO (паттерн OVH).</p>
+        </div>
+      </div>
+
+      <details>
+        <summary>Где физически хранятся данные?</summary>
+        <p class="tiny">В мокапе: в немецком дата-центре. Уточните в реальной версии географию и условия размещения.</p>
+      </details>
+      <details>
+        <summary>Что входит в Backup Local и Remote?</summary>
+        <p class="tiny">Опишите: частоту, retention, изоляцию, процесс восстановления, опции DR.</p>
+      </details>
+      <details>
+        <summary>Как обеспечить безопасный доступ удалённым сотрудникам?</summary>
+        <p class="tiny">VPN/сегментация, роли доступа, отдельные подсети для сервисов и админки.</p>
+      </details>
+      <details>
+        <summary>Сколько времени занимает миграция?</summary>
+        <p class="tiny">3 шага: оценка → пилот → запуск. Вставьте типовые сроки (например, 1–2 недели) если готовы.</p>
+      </details>
+      <details>
+        <summary>Есть ли SLA и как быстро отвечает поддержка?</summary>
+        <p class="tiny">Сошлитесь на ваши уровни поддержки и SLA. В мокапе это placeholder.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footgrid">
+      <div>
+        <b>SIM-Networks • Archetype Mockup (A2)</b>
+        <p class="tiny" style="margin:6px 0 0">
+          Это HTML-мокап структуры архетипной страницы в стиле вашей типовой SIM-Cloud страницы.
+          Тексты и цифры можно заменить на финальные.
+        </p>
+      </div>
+      <div>
+        <p class="tiny" style="margin:0">
+          Контакты/ссылки/юридические блоки — плейсхолдер.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

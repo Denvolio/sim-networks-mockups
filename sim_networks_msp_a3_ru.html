@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sim Networks — Партнёрская программа MSP (Мокап A3)</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f3; color: #1a1a1a; }
+  .page { max-width: 900px; margin: 0 auto; background: #fff; box-shadow: 0 0 0 0.5px rgba(0,0,0,0.1); }
+
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; border-bottom: 0.5px solid rgba(0,0,0,0.1); }
+  .nav-logo { font-size: 15px; font-weight: 500; color: #1a1a1a; letter-spacing: -0.3px; }
+  .nav-logo span { color: #1D9E75; }
+  .nav-links { display: flex; gap: 20px; font-size: 13px; color: #666; }
+  .nav-links .active { color: #1D9E75; font-weight: 500; }
+  .nav-cta { background: #1D9E75; color: #fff; font-size: 13px; padding: 7px 16px; border-radius: 8px; border: none; cursor: pointer; }
+
+  .breadcrumb { font-size: 12px; color: #999; padding: 10px 24px; }
+  .breadcrumb span { color: #1D9E75; }
+
+  /* HERO */
+  .hero { padding: 40px 24px 36px; border-bottom: 0.5px solid rgba(0,0,0,0.08); display: grid; grid-template-columns: 1fr 340px; gap: 32px; align-items: start; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: #E1F5EE; color: #0F6E56; font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 20px; margin-bottom: 14px; }
+  .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #1D9E75; }
+  .hero h1 { font-size: 26px; font-weight: 500; color: #1a1a1a; line-height: 1.25; margin-bottom: 12px; letter-spacing: -0.5px; }
+  .hero h1 em { color: #1D9E75; font-style: normal; }
+  .hero-desc { font-size: 14px; color: #555; line-height: 1.65; margin-bottom: 20px; }
+  .hero-icp { background: #f7f7f5; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 14px 16px; margin-bottom: 20px; }
+  .hero-icp-label { font-size: 11px; color: #999; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .hero-icp-text { font-size: 13px; color: #1a1a1a; line-height: 1.55; }
+  .hero-icp-text strong { font-weight: 500; color: #0F6E56; }
+  .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-primary { background: #1D9E75; color: #fff; font-size: 13px; padding: 9px 20px; border-radius: 8px; border: none; cursor: pointer; }
+  .btn-secondary { background: transparent; color: #1a1a1a; font-size: 13px; padding: 9px 20px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.2); cursor: pointer; }
+  .hero-visual { background: #f7f7f5; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 20px; }
+  .hero-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .hero-stat { background: #fff; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 8px; padding: 14px 12px; }
+  .hero-stat-val { font-size: 22px; font-weight: 500; color: #1D9E75; }
+  .hero-stat-lbl { font-size: 11px; color: #888; margin-top: 2px; }
+  .hero-tier-preview { margin-top: 10px; background: #fff; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 8px; padding: 12px; }
+  .tier-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 0.5px solid rgba(0,0,0,0.07); font-size: 12px; }
+  .tier-row:last-child { border-bottom: none; }
+  .tier-name { color: #666; }
+  .tier-disc { font-weight: 500; color: #1D9E75; }
+  .tier-mrr { color: #aaa; }
+
+  .section { padding: 32px 24px; border-bottom: 0.5px solid rgba(0,0,0,0.08); }
+  .section-tag { font-size: 11px; color: #0F6E56; font-weight: 500; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px; }
+  .section-title { font-size: 20px; font-weight: 500; color: #1a1a1a; margin-bottom: 6px; letter-spacing: -0.3px; }
+  .section-sub { font-size: 13px; color: #666; line-height: 1.6; margin-bottom: 24px; max-width: 540px; }
+
+  /* STEPS */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .step { background: #f7f7f5; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 18px 16px; }
+  .step-num { width: 24px; height: 24px; border-radius: 50%; background: #E1F5EE; color: #0F6E56; font-size: 12px; font-weight: 500; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+  .step-title { font-size: 13px; font-weight: 500; color: #1a1a1a; margin-bottom: 6px; }
+  .step-desc { font-size: 12px; color: #666; line-height: 1.55; }
+
+  /* TIERS TABLE */
+  .tier-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .tier-table th { text-align: left; font-weight: 500; font-size: 12px; color: #888; padding: 8px 12px; border-bottom: 0.5px solid rgba(0,0,0,0.1); }
+  .tier-table td { padding: 10px 12px; border-bottom: 0.5px solid rgba(0,0,0,0.07); color: #1a1a1a; }
+  .tier-table tr:last-child td { border-bottom: none; }
+  .tier-table tr.highlight { background: #E1F5EE; }
+  .tier-table tr.highlight td { color: #085041; }
+  .disc-badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 10px; }
+  .badge-starter { background: #e8e8e5; color: #444; }
+  .badge-silver { background: #d0d0cc; color: #333; }
+  .badge-gold { background: #EF9F27; color: #412402; }
+  .badge-plat { background: #1D9E75; color: #fff; }
+
+  /* PRODUCTS */
+  .prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .prod-card { border: 0.5px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 16px; }
+  .prod-icon { width: 32px; height: 32px; border-radius: 8px; background: #E1F5EE; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+  .prod-name { font-size: 13px; font-weight: 500; color: #1a1a1a; margin-bottom: 4px; }
+  .prod-desc { font-size: 12px; color: #666; line-height: 1.5; }
+
+  /* TRUST */
+  .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px; }
+  .trust-card { border: 0.5px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 16px; }
+  .trust-quote { font-size: 12px; color: #555; line-height: 1.6; font-style: italic; margin-bottom: 10px; }
+  .trust-person { font-size: 11px; font-weight: 500; color: #1a1a1a; }
+  .trust-company { font-size: 11px; color: #999; }
+  .certs { display: flex; gap: 8px; flex-wrap: wrap; }
+  .cert-pill { background: #f7f7f5; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 20px; font-size: 11px; color: #666; padding: 4px 12px; }
+
+  /* FAQ */
+  .faq-item { border-bottom: 0.5px solid rgba(0,0,0,0.08); padding: 14px 0; }
+  .faq-q { font-size: 13px; font-weight: 500; color: #1a1a1a; display: flex; justify-content: space-between; cursor: pointer; gap: 12px; }
+  .faq-a { font-size: 12px; color: #666; line-height: 1.65; margin-top: 8px; max-width: 640px; }
+  .faq-toggle { color: #ccc; font-size: 16px; flex-shrink: 0; }
+
+  /* CTA BAND */
+  .cta-band { background: #085041; border-radius: 12px; padding: 28px; display: flex; align-items: center; justify-content: space-between; margin: 24px; gap: 20px; }
+  .cta-band h2 { font-size: 18px; font-weight: 500; color: #E1F5EE; margin-bottom: 6px; }
+  .cta-band p { font-size: 13px; color: #5DCAA5; max-width: 420px; line-height: 1.5; }
+  .cta-band-btns { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; flex-shrink: 0; }
+  .btn-white { background: #fff; color: #085041; font-size: 13px; font-weight: 500; padding: 10px 22px; border-radius: 8px; border: none; cursor: pointer; white-space: nowrap; }
+  .btn-ghost { background: transparent; color: #9FE1CB; font-size: 13px; padding: 10px 22px; border-radius: 8px; border: 0.5px solid #1D9E75; cursor: pointer; white-space: nowrap; }
+
+  .page-label { font-size: 10px; color: #bbb; text-align: center; padding: 10px; letter-spacing: 0.5px; border-top: 0.5px solid rgba(0,0,0,0.06); }
+
+  @media (max-width: 700px) {
+    .hero { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .prod-grid { grid-template-columns: 1fr 1fr; }
+    .trust-grid { grid-template-columns: 1fr; }
+    .cta-band { flex-direction: column; align-items: flex-start; }
+    .cta-band-btns { align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">Sim<span>Networks</span></div>
+    <div class="nav-links">
+      <span>Решения</span>
+      <span>Партнёрам</span>
+      <span class="active">Программа MSP</span>
+      <span>Ресурсы</span>
+    </div>
+    <button class="nav-cta">Стать партнёром</button>
+  </nav>
+
+  <div class="breadcrumb">Партнёрам → <span>Программа MSP</span></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-badge"><span class="hero-badge-dot"></span>Партнёрская программа · Суверенное облако ЕС</div>
+      <h1>Стройте облачный бизнес<br>на <em>европейской инфраструктуре</em></h1>
+      <p class="hero-desc">Вы управляете IT для 5–50 клиентов-SMB. Мы даём инфраструктуру, маржу и инструменты для роста — без зависимости от американских гиперскейлеров.</p>
+      <div class="hero-icp">
+        <div class="hero-icp-label">Эта страница для вас, если</div>
+        <div class="hero-icp-text">Вы — <strong>IT-интегратор, MSP или реселлер</strong>, который настраивает, управляет или сопровождает облачную инфраструктуру от имени клиентов — и ищет <strong>GDPR-совместимую европейскую альтернативу</strong> с реальной партнёрской маржой.</div>
+      </div>
+      <div class="hero-btns">
+        <button class="btn-primary">Подать заявку онлайн — мгновенный доступ</button>
+        <button class="btn-secondary">Скачать гайд для партнёров</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-stat-grid">
+        <div class="hero-stat"><div class="hero-stat-val">30%</div><div class="hero-stat-lbl">Максимальная маржа</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">100%</div><div class="hero-stat-lbl">Данные только в ЕС</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">White label</div><div class="hero-stat-lbl">Доступно от Gold+</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">24/7</div><div class="hero-stat-lbl">Партнёрская поддержка</div></div>
+      </div>
+      <div class="hero-tier-preview">
+        <div class="tier-row"><span class="tier-name">Starter</span><span class="tier-disc">скидка 10%</span><span class="tier-mrr">от €500/мес</span></div>
+        <div class="tier-row"><span class="tier-name">Silver</span><span class="tier-disc">скидка 18%</span><span class="tier-mrr">от €2 тыс/мес</span></div>
+        <div class="tier-row"><span class="tier-name">Gold</span><span class="tier-disc">скидка 25%</span><span class="tier-mrr">от €8 тыс/мес</span></div>
+        <div class="tier-row"><span class="tier-name">Platinum</span><span class="tier-disc">скидка 30%</span><span class="tier-mrr">от €20 тыс/мес</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="section-tag">Как это работает</div>
+    <div class="section-title">Начните зарабатывать с первого дня — 3 шага</div>
+    <div class="section-sub">Никаких долгих согласований. Зарегистрируйтесь онлайн, получите мгновенный доступ к порталу и разверните первую среду для клиента уже сегодня.</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Регистрация онлайн</div>
+        <div class="step-desc">Заполните данные компании и получите мгновенное одобрение. Никаких ожиданий звонка от менеджера — портал доступен через несколько минут.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Тестовые ресурсы</div>
+        <div class="step-desc">Бесплатная POC-среда для тестирования и демонстрации клиентам. Готовьте коммерческие предложения с реальными ценами до заключения договора.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Управляйте и развивайтесь</div>
+        <div class="step-desc">Партнёрский портал для управления всеми клиентами, биллингом и тикетами. White-label опция доступна с уровня Gold.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIERS TABLE -->
+  <section class="section">
+    <div class="section-tag">Уровни партнёрства</div>
+    <div class="section-title">Прозрачная маржа — без сюрпризов</div>
+    <div class="section-sub">Рассчитайте экономику до первого разговора с нами. Скидки применяются с первого счёта.</div>
+    <table class="tier-table">
+      <thead>
+        <tr>
+          <th>Уровень</th>
+          <th>Ежемесячный оборот</th>
+          <th>Скидка</th>
+          <th>White label</th>
+          <th>Персональный AM</th>
+          <th>MDF-бюджет</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="disc-badge badge-starter">Starter</span></td>
+          <td>€500 – €2 000</td>
+          <td>10%</td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><span class="disc-badge badge-silver">Silver</span></td>
+          <td>€2 000 – €8 000</td>
+          <td>18%</td>
+          <td>—</td>
+          <td>Общий</td>
+          <td>—</td>
+        </tr>
+        <tr class="highlight">
+          <td><span class="disc-badge badge-gold">Gold</span></td>
+          <td>€8 000 – €20 000</td>
+          <td>25%</td>
+          <td>✓</td>
+          <td>Персональный</td>
+          <td>€500/кв.</td>
+        </tr>
+        <tr>
+          <td><span class="disc-badge badge-plat">Platinum</span></td>
+          <td>€20 000+</td>
+          <td>30%</td>
+          <td>✓</td>
+          <td>Персональный</td>
+          <td>€2 000/кв.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section">
+    <div class="section-tag">Что вы перепродаёте</div>
+    <div class="section-title">Полный IaaS-стек — один партнёрский договор</div>
+    <div class="section-sub">Всё, что нужно вашим клиентам, управляется из единого портала под вашим брендом.</div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="4" width="14" height="8" rx="2" stroke="#1D9E75" stroke-width="1.2"/><line x1="4" y1="8" x2="12" y2="8" stroke="#1D9E75" stroke-width="1.2"/></svg>
+        </div>
+        <div class="prod-name">Вычисления (VPS / выделенные)</div>
+        <div class="prod-desc">Масштабируемые ВМ и bare metal серверы. Дата-центры в ЕС, гарантированные ресурсы.</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#1D9E75" stroke-width="1.2"/><path d="M8 5v3l2 2" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="prod-name">Управляемое резервное копирование</div>
+        <div class="prod-desc">Автоматические ежедневные бэкапы с восстановлением на точку во времени. GDPR-совместимое хранилище.</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" stroke="#1D9E75" stroke-width="1.2"/><rect x="9" y="2" width="5" height="5" rx="1" stroke="#1D9E75" stroke-width="1.2"/><rect x="2" y="9" width="5" height="5" rx="1" stroke="#1D9E75" stroke-width="1.2"/><rect x="9" y="9" width="5" height="5" rx="1" stroke="#1D9E75" stroke-width="1.2"/></svg>
+        </div>
+        <div class="prod-name">Приватное облако (VMware)</div>
+        <div class="prod-desc">Изолированное мультиарендное облако для клиентов со строгими требованиями к соответствию.</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L2 6v8h12V6L8 2z" stroke="#1D9E75" stroke-width="1.2"/><rect x="6" y="9" width="4" height="5" rx="0.5" stroke="#1D9E75" stroke-width="1.2"/></svg>
+        </div>
+        <div class="prod-name">Объектное хранилище (S3)</div>
+        <div class="prod-desc">S3-совместимое хранилище в ЕС. Идеально для резервных копий SaaS и медиаконтента.</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#1D9E75" stroke-width="1.2"/><path d="M5 8h6M8 5v6" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="prod-name">Защита от DDoS</div>
+        <div class="prod-desc">Постоянная фильтрация трафика. Включена в уровень Silver+ без дополнительной оплаты.</div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 5h10M3 8h10M3 11h6" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="prod-name">Партнёрский портал + API</div>
+        <div class="prod-desc">Создавайте, выставляйте счета и управляйте всеми клиентами через портал или REST API.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="section">
+    <div class="section-tag">Голоса партнёров</div>
+    <div class="section-title">Что говорят наши MSP-партнёры</div>
+    <div class="section-sub">Реальные отзывы интеграторов и реселлеров, работающих на инфраструктуре Sim Networks.</div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="trust-quote">«Перевели всех SMB-клиентов с AWS на Sim Networks. Маржа лучше, и теперь у нас есть чёткий ответ на вопрос "где хранятся мои данные?"»</div>
+        <div class="trust-person">Томаш Вежбицкий</div>
+        <div class="trust-company">CEO · CloudBridge Sp. z o.o., Варшава</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-quote">«Партнёрский портал реально удобен. Могу создавать ресурсы, выставлять счета клиентам и открывать тикеты — всё без звонков менеджеру.»</div>
+        <div class="trust-person">Маркус Хайдль</div>
+        <div class="trust-company">Управляющий директор · ITServ GmbH, Мюнхен</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-quote">«Опция white-label на Gold-уровне — клиенты видят наш бренд. Это именно то, что нам было нужно для отличия от обычных реселлеров публичного облака.»</div>
+        <div class="trust-person">Агнешка Ковальска</div>
+        <div class="trust-company">COO · DataPath Integrations, Краков</div>
+      </div>
+    </div>
+    <div class="certs">
+      <div class="cert-pill">ISO 27001</div>
+      <div class="cert-pill">ISO 9001</div>
+      <div class="cert-pill">BSI C5 Type II</div>
+      <div class="cert-pill">Участник Gaia-X</div>
+      <div class="cert-pill">GDPR-совместимость</div>
+      <div class="cert-pill">PCI DSS</div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="section-tag">Часто задаваемые вопросы</div>
+    <div class="section-title">Вопросы партнёров</div>
+    <div class="faq-item">
+      <div class="faq-q">Можно ли управлять несколькими клиентскими аккаунтами из одного портала? <span class="faq-toggle">+</span></div>
+      <div class="faq-a">Да. Партнёрский портал даёт единое окно управления всеми клиентскими средами. Вы можете переключаться между аккаунтами, просматривать биллинг и открывать тикеты от имени любого клиента.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Есть ли минимальный ежемесячный оборот? <span class="faq-toggle">+</span></div>
+      <div class="faq-a">Для уровня Starter — €500 в месяц. Вступительного взноса нет. Вы автоматически переходите на более высокие уровни по мере роста клиентской базы — скидки обновляются автоматически.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Где именно хранятся данные? <span class="faq-toggle">+</span></div>
+      <div class="faq-a">Все данные остаются в юрисдикции ЕС — основные дата-центры в Варшаве и Франкфурте. Мы не передаём данные американским юридическим лицам и не подпадаем под действие US CLOUD Act.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Можно ли использовать инфраструктуру Sim Networks под своим брендом? <span class="faq-toggle">+</span></div>
+      <div class="faq-a">Опции white-label доступны с уровня Gold и выше. Это включает брендирование портала и возможность выставлять счета клиентам от имени вашей компании.</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <div>
+      <h2>Готовы построить облачный бизнес?</h2>
+      <p>Регистрация за 5 минут. Мгновенный доступ к порталу, бесплатные POC-ресурсы, никакого ожидания одобрения.</p>
+    </div>
+    <div class="cta-band-btns">
+      <button class="btn-white">Подать заявку — бесплатно</button>
+      <button class="btn-ghost">Связаться с командой</button>
+    </div>
+  </div>
+
+  <div class="page-label">МОКАП — A3: MSP / IT-интеграторы — Sim Networks · Только для внутреннего использования</div>
+</div>
+</body>
+</html>

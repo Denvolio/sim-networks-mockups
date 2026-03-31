@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sim Networks — Производство и промышленность (Мокап A5)</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f3; color: #1a1a1a; }
+  .page { max-width: 900px; margin: 0 auto; background: #fff; box-shadow: 0 0 0 0.5px rgba(0,0,0,0.1); }
+
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; border-bottom: 0.5px solid rgba(0,0,0,0.1); }
+  .nav-logo { font-size: 15px; font-weight: 500; color: #1a1a1a; letter-spacing: -0.3px; }
+  .nav-logo span { color: #185FA5; }
+  .nav-links { display: flex; gap: 20px; font-size: 13px; color: #666; }
+  .nav-links .active { color: #185FA5; font-weight: 500; }
+  .nav-cta { background: #185FA5; color: #fff; font-size: 13px; padding: 7px 16px; border-radius: 8px; border: none; cursor: pointer; }
+
+  .breadcrumb { font-size: 12px; color: #999; padding: 10px 24px; }
+  .breadcrumb span { color: #185FA5; }
+
+  /* HERO */
+  .hero { padding: 40px 24px 36px; border-bottom: 0.5px solid rgba(0,0,0,0.08); }
+  .hero-inner { display: grid; grid-template-columns: 1fr 300px; gap: 32px; align-items: start; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: #E6F1FB; color: #185FA5; font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 20px; margin-bottom: 14px; }
+  .hero h1 { font-size: 25px; font-weight: 500; color: #1a1a1a; line-height: 1.25; margin-bottom: 12px; letter-spacing: -0.5px; }
+  .hero h1 em { color: #185FA5; font-style: normal; }
+  .hero-desc { font-size: 14px; color: #555; line-height: 1.65; margin-bottom: 20px; }
+  .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-primary { background: #185FA5; color: #fff; font-size: 13px; padding: 9px 20px; border-radius: 8px; border: none; cursor: pointer; }
+  .btn-secondary { background: transparent; color: #1a1a1a; font-size: 13px; padding: 9px 20px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.2); cursor: pointer; }
+
+  /* ANTI-HYPERSCALER BOX */
+  .anti-box { background: #042C53; border-radius: 12px; padding: 18px 20px; }
+  .anti-box-label { font-size: 10px; color: #85B7EB; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 10px; }
+  .anti-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 0.5px solid rgba(255,255,255,0.08); font-size: 12px; gap: 8px; }
+  .anti-row:last-child { border-bottom: none; }
+  .anti-issue { color: #B5D4F4; flex: 1; }
+  .anti-badges { display: flex; gap: 4px; flex-shrink: 0; }
+  .anti-badge { font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 10px; white-space: nowrap; }
+  .anti-bad { background: rgba(226,75,74,0.2); color: #F09595; }
+  .anti-good { background: rgba(55,138,221,0.25); color: #85B7EB; }
+
+  .section { padding: 32px 24px; border-bottom: 0.5px solid rgba(0,0,0,0.08); }
+  .section-tag { font-size: 11px; color: #185FA5; font-weight: 500; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px; }
+  .section-title { font-size: 20px; font-weight: 500; color: #1a1a1a; margin-bottom: 6px; letter-spacing: -0.3px; }
+  .section-sub { font-size: 13px; color: #666; line-height: 1.6; margin-bottom: 24px; max-width: 540px; }
+
+  /* ICP CARDS */
+  .icp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .icp-card { border: 0.5px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 18px 16px; }
+  .icp-card.featured { border-color: #378ADD; border-width: 1.5px; }
+  .icp-card-badge { display: inline-block; font-size: 10px; font-weight: 500; padding: 3px 9px; border-radius: 10px; margin-bottom: 12px; }
+  .badge-blue { background: #E6F1FB; color: #0C447C; }
+  .badge-amber { background: #FAEEDA; color: #633806; }
+  .badge-green { background: #EAF3DE; color: #27500A; }
+  .icp-card-title { font-size: 13px; font-weight: 500; color: #1a1a1a; margin-bottom: 8px; }
+  .icp-card-desc { font-size: 12px; color: #666; line-height: 1.55; margin-bottom: 12px; }
+  .icp-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .icp-tag { font-size: 10px; background: #f5f5f3; color: #777; padding: 2px 8px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.1); }
+
+  /* CHALLENGE-BENEFIT */
+  .cb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .cb-card { border: 0.5px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 18px 16px; }
+  .cb-challenge { font-size: 11px; color: #A32D2D; font-weight: 500; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.4px; }
+  .cb-q { font-size: 13px; font-weight: 500; color: #1a1a1a; margin-bottom: 10px; line-height: 1.4; }
+  .cb-divider { height: 0.5px; background: rgba(0,0,0,0.08); margin-bottom: 10px; }
+  .cb-benefit-label { font-size: 11px; color: #185FA5; font-weight: 500; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.4px; }
+  .cb-answer { font-size: 12px; color: #666; line-height: 1.55; }
+  .cb-answer strong { color: #185FA5; font-weight: 500; }
+
+  /* COMPLIANCE */
+  .comp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .comp-card { background: #f7f7f5; border-radius: 12px; padding: 16px; }
+  .comp-title { font-size: 13px; font-weight: 500; color: #1a1a1a; margin-bottom: 4px; }
+  .comp-desc { font-size: 12px; color: #666; line-height: 1.5; }
+  .cert-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+  .cert-pill { background: #f7f7f5; border: 0.5px solid rgba(0,0,0,0.1); border-radius: 20px; font-size: 11px; color: #666; padding: 4px 12px; }
+
+  /* CASE STUDIES */
+  .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .case-card { border: 0.5px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 18px 16px; }
+  .case-company { font-size: 12px; font-weight: 500; color: #185FA5; margin-bottom: 6px; }
+  .case-result { font-size: 22px; font-weight: 500; color: #1a1a1a; margin-bottom: 6px; }
+  .case-desc { font-size: 12px; color: #666; line-height: 1.5; }
+  .case-tag { display: inline-block; margin-top: 10px; font-size: 10px; background: #E6F1FB; color: #0C447C; padding: 2px 8px; border-radius: 8px; }
+
+  /* JOURNEY */
+  .journey-wrap { border: 0.5px solid rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden; }
+  .journey { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .journey-step { padding: 20px 18px; border-right: 0.5px solid rgba(0,0,0,0.08); }
+  .journey-step:last-child { border-right: none; }
+  .j-num { font-size: 28px; font-weight: 500; color: #B5D4F4; margin-bottom: 8px; }
+  .j-title { font-size: 13px; font-weight: 500; color: #1a1a1a; margin-bottom: 6px; }
+  .j-desc { font-size: 12px; color: #666; line-height: 1.55; }
+  .j-duration { font-size: 11px; color: #aaa; margin-top: 8px; }
+
+  /* CTA BAND */
+  .cta-band { background: #042C53; border-radius: 12px; padding: 28px; display: flex; align-items: center; justify-content: space-between; margin: 24px; gap: 20px; }
+  .cta-band h2 { font-size: 18px; font-weight: 500; color: #E6F1FB; margin-bottom: 6px; }
+  .cta-band p { font-size: 13px; color: #85B7EB; max-width: 420px; line-height: 1.5; }
+  .cta-band-btns { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; flex-shrink: 0; }
+  .btn-white { background: #fff; color: #042C53; font-size: 13px; font-weight: 500; padding: 10px 22px; border-radius: 8px; border: none; cursor: pointer; white-space: nowrap; }
+  .btn-ghost { background: transparent; color: #85B7EB; font-size: 13px; padding: 10px 22px; border-radius: 8px; border: 0.5px solid #378ADD; cursor: pointer; white-space: nowrap; }
+
+  .page-label { font-size: 10px; color: #bbb; text-align: center; padding: 10px; letter-spacing: 0.5px; border-top: 0.5px solid rgba(0,0,0,0.06); }
+
+  @media (max-width: 700px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .icp-grid { grid-template-columns: 1fr; }
+    .cb-grid { grid-template-columns: 1fr; }
+    .comp-grid { grid-template-columns: 1fr; }
+    .case-grid { grid-template-columns: 1fr; }
+    .journey { grid-template-columns: 1fr; }
+    .journey-step { border-right: none; border-bottom: 0.5px solid rgba(0,0,0,0.08); }
+    .cta-band { flex-direction: column; align-items: flex-start; }
+    .cta-band-btns { align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">Sim<span>Networks</span></div>
+    <div class="nav-links">
+      <span>Решения</span>
+      <span class="active">Отрасли</span>
+      <span>Партнёрам</span>
+      <span>Ресурсы</span>
+    </div>
+    <button class="nav-cta">Заказать звонок</button>
+  </nav>
+
+  <div class="breadcrumb">Отрасли → <span>Производство и промышленность</span></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">A5 · Производство и промышленность</div>
+        <h1>Облако для <em>европейских промышленных данных</em> — суверенное, сертифицированное, на ваших условиях</h1>
+        <p class="hero-desc">Ваши файлы НИОКР, производственные данные и данные клиентов никогда не покинут юрисдикцию ЕС. Мы обеспечиваем производителям соответствие требованиям, производительность и изоляцию — то, что американские гиперскейлеры юридически не могут гарантировать.</p>
+        <div class="hero-btns">
+          <button class="btn-primary">Заказать звонок</button>
+          <button class="btn-secondary">Скачать гайд по соответствию</button>
+        </div>
+      </div>
+      <div class="anti-box">
+        <div class="anti-box-label">Гиперскейлер США vs. Sim Networks</div>
+        <div class="anti-row">
+          <span class="anti-issue">Риск US CLOUD Act</span>
+          <div class="anti-badges"><span class="anti-badge anti-bad">Есть</span><span class="anti-badge anti-good">Нет</span></div>
+        </div>
+        <div class="anti-row">
+          <span class="anti-issue">Данные только в ЕС</span>
+          <div class="anti-badges"><span class="anti-badge anti-bad">Опционально</span><span class="anti-badge anti-good">Гарантировано</span></div>
+        </div>
+        <div class="anti-row">
+          <span class="anti-issue">GDPR DPA</span>
+          <div class="anti-badges"><span class="anti-badge anti-bad">Сложно</span><span class="anti-badge anti-good">Нативно</span></div>
+        </div>
+        <div class="anti-row">
+          <span class="anti-issue">Готовность к NIS2</span>
+          <div class="anti-badges"><span class="anti-badge anti-bad">Вручную</span><span class="anti-badge anti-good">Встроено</span></div>
+        </div>
+        <div class="anti-row">
+          <span class="anti-issue">Изолированное приватное облако</span>
+          <div class="anti-badges"><span class="anti-badge anti-bad">Доп. опция</span><span class="anti-badge anti-good">Стандарт</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ICP SEGMENTS -->
+  <section class="section">
+    <div class="section-tag">Для кого это</div>
+    <div class="section-title">Три типа производственных клиентов — найдите свой</div>
+    <div class="section-sub">Разные требования к соответствию требуют разной инфраструктуры. Скажите нам, какой профиль соответствует вашей ситуации.</div>
+    <div class="icp-grid">
+      <div class="icp-card featured">
+        <div class="icp-card-badge badge-blue">Владельцы стратегических данных</div>
+        <div class="icp-card-title">НИОКР, интеллектуальная собственность и проприетарные процессы</div>
+        <div class="icp-card-desc">Производители с чувствительными конструкторскими файлами, формулами или производственными ноу-хау, которые не должны быть доступны американским властям или иностранным структурам.</div>
+        <div class="icp-tags">
+          <span class="icp-tag">Хостинг CAD/PLM</span>
+          <span class="icp-tag">Изолированная сеть</span>
+          <span class="icp-tag">Защита от Schrems II</span>
+        </div>
+      </div>
+      <div class="icp-card">
+        <div class="icp-card-badge badge-amber">Операторы критической инфраструктуры</div>
+        <div class="icp-card-title">Производители под регулированием NIS2 / OES</div>
+        <div class="icp-card-desc">Предприятия энергетики, водоснабжения, химической или тяжёлой промышленности, подпадающие под NIS2 или национальные требования к критической инфраструктуре с обязательной отчётностью об инцидентах.</div>
+        <div class="icp-tags">
+          <span class="icp-tag">Соответствие NIS2</span>
+          <span class="icp-tag">SLA 99,99%</span>
+          <span class="icp-tag">Планы DR/BCP</span>
+        </div>
+      </div>
+      <div class="icp-card">
+        <div class="icp-card-badge badge-green">Команды цифровой трансформации</div>
+        <div class="icp-card-title">Industry 4.0 и внедрение IIoT</div>
+        <div class="icp-card-desc">Производители, переносящие OT/IT-нагрузки в облако, подключающие производственные линии к ERP/MES или запускающие AI/ML на производственных данных — в границах ЕС.</div>
+        <div class="icp-tags">
+          <span class="icp-tag">Периферийные вычисления</span>
+          <span class="icp-tag">IIoT-озеро данных</span>
+          <span class="icp-tag">Совместимо с Gaia-X</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHALLENGE-BENEFIT -->
+  <section class="section">
+    <div class="section-tag">Ваши задачи — наши ответы</div>
+    <div class="section-title">Мы говорим на языке производства, а не только облака</div>
+    <div class="cb-grid">
+      <div class="cb-card">
+        <div class="cb-challenge">Проблема</div>
+        <div class="cb-q">«Юристы говорят, что мы не можем использовать AWS для файлов НИОКР — риск CLOUD Act.»</div>
+        <div class="cb-divider"></div>
+        <div class="cb-benefit-label">Ответ Sim Networks</div>
+        <div class="cb-answer">Вся инфраструктура работает исключительно под <strong>законодательством ЕС</strong>. Никаких связей с американскими компаниями. Мы предоставляем юридическое заключение и DPA, которые вы можете показать совету директоров.</div>
+      </div>
+      <div class="cb-card">
+        <div class="cb-challenge">Проблема</div>
+        <div class="cb-q">«Нам нужна бесперебойная работа производства — миграция в облако кажется рискованной.»</div>
+        <div class="cb-divider"></div>
+        <div class="cb-benefit-label">Ответ Sim Networks</div>
+        <div class="cb-answer"><strong>Гибридный подход</strong> — оставьте производство на локальных серверах, перенесите DR и dev-среду в облако первыми. Мы вместе определяем объём, без миграции «всё и сразу».</div>
+      </div>
+      <div class="cb-card">
+        <div class="cb-challenge">Проблема</div>
+        <div class="cb-q">«Мы обрабатываем персональные данные сотрудников и клиентов из ЕС — соответствие GDPR обязательно.»</div>
+        <div class="cb-divider"></div>
+        <div class="cb-benefit-label">Ответ Sim Networks</div>
+        <div class="cb-answer">Данные никогда не покидают дата-центры ЕС. Мы подписываем <strong>GDPR DPA</strong> в день начала работы и предоставляем журналы аудита по запросу — без дополнительного compliance-проекта.</div>
+      </div>
+      <div class="cb-card">
+        <div class="cb-challenge">Проблема</div>
+        <div class="cb-q">«Наши нагрузки CAD и PLM требуют серьёзных вычислительных мощностей — облако кажется медленным.»</div>
+        <div class="cb-divider"></div>
+        <div class="cb-benefit-label">Ответ Sim Networks</div>
+        <div class="cb-answer">Выделенные bare metal серверы или ВМ с большим объёмом памяти для <strong>вычислительно интенсивных задач</strong>. Частная сеть между производством и облаком — задержка измеряется, а не предполагается.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPLIANCE -->
+  <section class="section">
+    <div class="section-tag">Соответствие и сертификаты</div>
+    <div class="section-title">Сертификаты, которые запросит ваш отдел закупок</div>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <div class="comp-title">GDPR и Schrems II</div>
+        <div class="comp-desc">Полное хранение данных в ЕС. Стандартные договорные оговорки не нужны — данные никогда не покидают европейскую правовую территорию.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-title">Директива NIS2</div>
+        <div class="comp-desc">Инфраструктура и процессы соответствуют требованиям NIS2. Поддержка при отчётности об инцидентах включена в тариф Enterprise.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-title">ISO 27001 и BSI C5</div>
+        <div class="comp-desc">Ежегодный аудит независимыми третьими сторонами. Отчёты об аудите предоставляются по запросу под NDA.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-title">Участник Gaia-X</div>
+        <div class="comp-desc">Активный участник европейской инициативы по суверенитету данных. Инфраструктура совместима с требованиями федерального каталога Gaia-X.</div>
+      </div>
+    </div>
+    <div class="cert-row">
+      <div class="cert-pill">ISO 27001</div>
+      <div class="cert-pill">ISO 9001</div>
+      <div class="cert-pill">BSI C5 Type II</div>
+      <div class="cert-pill">PCI DSS</div>
+      <div class="cert-pill">Участник Gaia-X</div>
+      <div class="cert-pill">Соответствие NIS2</div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section class="section">
+    <div class="section-tag">Кейсы</div>
+    <div class="section-title">Производители, уже работающие на Sim Networks</div>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-company">Производитель промышленного оборудования · Германия</div>
+        <div class="case-result">-62% затрат на инфраструктуру</div>
+        <div class="case-desc">Перенесли среду совместной работы над CAD из локальной инфраструктуры в приватное облако. Соответствие Schrems II, доступ с 3 европейских площадок без увеличения задержки.</div>
+        <div class="case-tag">Суверенитет данных НИОКР</div>
+      </div>
+      <div class="case-card">
+        <div class="case-company">Химический дистрибьютор · Польша</div>
+        <div class="case-result">Аудит NIS2 пройден</div>
+        <div class="case-desc">Развернули среду аварийного восстановления до вступления в силу требований NIS2. RTO сокращён с 72 до 4 часов. Документация по соответствию предоставлена регулятору.</div>
+        <div class="case-tag">Критическая инфраструктура</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="section">
+    <div class="section-tag">Как начать</div>
+    <div class="section-title">От первого звонка до рабочей среды — 3 шага</div>
+    <div class="section-sub">На шаге 1 никаких обязательств не требуется. Большинство клиентов проходят путь от проработки до запуска в промышленную эксплуатацию менее чем за 6 недель.</div>
+    <div class="journey-wrap">
+      <div class="journey">
+        <div class="journey-step">
+          <div class="j-num">01</div>
+          <div class="j-title">Определение объёма и требований к соответствию</div>
+          <div class="j-desc">30-минутный звонок с архитектором решений. Мы составляем карту типов данных, нагрузок и нормативных требований — и рекомендуем подходящий уровень изоляции.</div>
+          <div class="j-duration">Неделя 1 · Бесплатно, без обязательств</div>
+        </div>
+        <div class="journey-step">
+          <div class="j-num">02</div>
+          <div class="j-title">Выбор архитектуры и запуск POC</div>
+          <div class="j-desc">Разворачиваем пилотную среду. Вы тестируете производительность на реальных нагрузках (CAD, ERP, бэкап) до подписания каких-либо документов.</div>
+          <div class="j-duration">Недели 2–3 · Бесплатные POC-ресурсы</div>
+        </div>
+        <div class="journey-step">
+          <div class="j-num">03</div>
+          <div class="j-title">Запуск в эксплуатацию с полной поддержкой</div>
+          <div class="j-desc">Поддержка миграции включена. Мониторинг 24/7 с первого дня. Юридический отдел получает всю документацию по соответствию в течение 48 часов после подписания договора.</div>
+          <div class="j-duration">Недели 4–6 · Готово к производству</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <div>
+      <h2>Готовы обсудить ваши производственные нагрузки?</h2>
+      <p>Поговорите с архитектором решений, который разбирается в промышленном соответствии, а не с обычным менеджером по продажам.</p>
+    </div>
+    <div class="cta-band-btns">
+      <button class="btn-white">Заказать звонок</button>
+      <button class="btn-ghost">Скачать гайд по соответствию</button>
+    </div>
+  </div>
+
+  <div class="page-label">МОКАП — A5: Производство и промышленность — Sim Networks · Только для внутреннего использования</div>
+</div>
+</body>
+</html>

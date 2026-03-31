@@ -1,0 +1,525 @@
+<!-- =========================================================
+     Archetype Mockup #2 (A3): MSP / System Integrators
+     Save as: archetype-msp-partners.html
+========================================================= -->
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SIM-Networks — Партнерская программа для MSP (A3)</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --bg2:#0f1b33;
+      --card:#0f203f;
+      --text:#e8eefc;
+      --muted:#a8b6d8;
+      --accent:#2b6cff;
+      --accent2:#00c2ff;
+      --warn:#ffcc66;
+      --ok:#31d0aa;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:16px;
+      --radius2:22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue";
+      color:var(--text);
+      background:
+        radial-gradient(900px 700px at 10% 10%, rgba(0,194,255,.22), transparent 60%),
+        radial-gradient(900px 700px at 90% 10%, rgba(43,108,255,.28), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      line-height:1.45;
+    }
+    .container{max-width:1100px;margin:0 auto;padding:0 18px}
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.65);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 0;gap:14px;
+    }
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+    .logo{
+      width:34px;height:34px;border-radius:10px;
+      background: linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow: 0 8px 20px rgba(43,108,255,.35);
+    }
+    .menu{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+    .menu a{
+      text-decoration:none;color:var(--muted);
+      padding:8px 10px;border-radius:10px;
+    }
+    .menu a:hover{background:rgba(255,255,255,.06);color:var(--text)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      gap:10px;text-decoration:none;border:1px solid var(--border);
+      padding:10px 14px;border-radius:12px;
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      cursor:pointer;
+    }
+    .btn.primary{
+      border:none;
+      background: linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow: 0 12px 24px rgba(43,108,255,.28);
+    }
+    .btn.small{padding:8px 12px;border-radius:11px;font-size:14px}
+
+    section{padding:26px 0}
+    .hero{padding:46px 0 22px}
+    .hero-grid{display:grid;grid-template-columns: 1.2fr .8fr;gap:18px;align-items:stretch}
+    h1{font-size:34px;line-height:1.15;margin:0 0 10px}
+    p{margin:0;color:var(--muted)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 10px;border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      color:var(--muted);font-size:13px;
+    }
+    .pill .dot{width:8px;height:8px;border-radius:99px;background:var(--ok)}
+    .card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 22px rgba(0,0,0,.22);
+      padding:14px;
+    }
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding:16px;
+      display:flex;flex-direction:column;gap:12px;
+    }
+    .hero-card h3{margin:0;font-size:14px;color:var(--muted);letter-spacing:.3px;text-transform:uppercase}
+    .form{display:grid;gap:10px;grid-template-columns:1fr 1fr}
+    .form .full{grid-column:1/-1}
+    label{font-size:12px;color:var(--muted)}
+    input, select, textarea{
+      width:100%;
+      margin-top:6px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(11,18,32,.45);
+      color:var(--text);
+      outline:none;
+    }
+    .section-title{
+      display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+    .section-title h2{margin:0;font-size:22px}
+    .section-title p{margin:0;color:var(--muted);max-width:820px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .list{margin:0;padding-left:18px;color:var(--muted)}
+    .list li{margin:6px 0}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:rgba(255,204,102,.12);
+      border:1px solid rgba(255,204,102,.25);
+      color:rgba(232,238,252,.95);
+      font-size:12px;
+    }
+    table{width:100%;border-collapse:separate;border-spacing:0}
+    th,td{padding:12px 10px;border-bottom:1px solid var(--border);text-align:left}
+    th{color:rgba(232,238,252,.92);font-size:13px}
+    td{color:var(--muted);font-size:14px}
+    .rowhead{color:var(--text);font-weight:700}
+    details{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:12px 12px;
+      background:rgba(255,255,255,.03);
+    }
+    details + details{margin-top:10px}
+    summary{cursor:pointer;color:var(--text);font-weight:650}
+    summary::-webkit-details-marker{display:none}
+    footer{
+      padding:24px 0 32px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      background: rgba(11,18,32,.35);
+    }
+    .tiny{font-size:12px;color:rgba(168,182,216,.78)}
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid-3,.grid-2{grid-template-columns:1fr}
+      .menu{display:none}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="#">
+        <span class="logo" aria-hidden="true"></span>
+        <b>SIM-Networks • Partner</b>
+      </a>
+      <nav class="menu" aria-label="Навигация">
+        <a href="#fit">Для кого</a>
+        <a href="#benefits">Преимущества</a>
+        <a href="#offers">Модели</a>
+        <a href="#economics">Экономика</a>
+        <a href="#onboarding">Онбординг</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn small" href="#apply">Регистрация</a>
+        <a class="btn primary small" href="#apply">Получить demo-доступ</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <h1>Партнерская программа для MSP и системных интеграторов</h1>
+          <p>
+            Стройте свой облачный бизнес на немецкой инфраструктуре: запускайте проекты клиентов,
+            управляйте ресурсами и продавайте ценность (compliance, производительность, поддержка) — с предсказуемой экономикой.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#apply">Стать партнёром</a>
+            <a class="btn" href="#economics">Посчитать экономику</a>
+          </div>
+          <div class="pill-row">
+            <span class="pill"><span class="dot"></span> DE / EU hosting</span>
+            <span class="pill"><span class="dot"></span> 2 зоны доступности</span>
+            <span class="pill"><span class="dot"></span> Backup Local + Remote</span>
+            <span class="pill"><span class="dot"></span> Поддержка 24/7</span>
+          </div>
+          <p class="tiny" style="margin-top:10px">
+            Мокап: все цифры/условия в таблицах ниже — плейсхолдеры. Их можно скрыть или заменить на «Request terms».
+          </p>
+        </div>
+
+        <!-- Lead form -->
+        <aside class="hero-card" id="apply">
+          <h3>Регистрация партнёра</h3>
+          <form class="form" action="#" method="post">
+            <div>
+              <label>Имя
+                <input type="text" name="name" placeholder="Denys" />
+              </label>
+            </div>
+            <div>
+              <label>Email
+                <input type="email" name="email" placeholder="you@msppartner.com" />
+              </label>
+            </div>
+            <div class="full">
+              <label>Компания / сайт
+                <input type="text" name="company" placeholder="MSP / Systemhaus / URL" />
+              </label>
+            </div>
+            <div>
+              <label>Тип партнёра
+                <select name="type">
+                  <option>MSP (managed services)</option>
+                  <option>System Integrator</option>
+                  <option>Reseller</option>
+                  <option>Consulting / Projects</option>
+                </select>
+              </label>
+            </div>
+            <div>
+              <label>Сколько клиентов вы обслуживаете?
+                <select name="clients">
+                  <option>1–10</option>
+                  <option>11–50</option>
+                  <option>51–200</option>
+                  <option>200+</option>
+                </select>
+              </label>
+            </div>
+            <div class="full">
+              <label>Комментарий
+                <textarea name="msg" rows="3" placeholder="Какие типовые проекты: бухгалтерия, производство, SaaS, миграции?"></textarea>
+              </label>
+            </div>
+            <div class="full actions">
+              <button class="btn primary" type="submit">Отправить заявку</button>
+              <a class="btn" href="#onboarding">Как устроен онбординг</a>
+            </div>
+            <p class="tiny" style="margin:0">
+              Нажимая «Отправить», вы соглашаетесь на связь по заявке (mockup).
+            </p>
+          </form>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIT -->
+  <section id="fit">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Для кого программа</h2>
+          <p>Чёткое ICP-описание (паттерн OVH/IONOS): кто вы, что делаете, кому помогаете.</p>
+        </div>
+        <span class="badge">«MSP-страница должна говорить про деньги и масштабирование»</span>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3 class="rowhead">MSP / Systemhaus</h3>
+          <p>Ведёте инфраструктуру клиентов “под ключ”: мониторинг, обновления, инциденты, поддержка пользователей.</p>
+        </div>
+        <div class="card">
+          <h3 class="rowhead">Integrator / Projects</h3>
+          <p>Проекты миграции, модернизация, частные облака, сегментация, безопасность, DR.</p>
+        </div>
+        <div class="card">
+          <h3 class="rowhead">Reseller / White-label</h3>
+          <p>Хотите продавать инфраструктуру как сервис со своей маржой и своей “упаковкой”.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section id="benefits">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Преимущества для MSP</h2>
+          <p>6 блоков в стиле вашей типовой страницы: «почему выбрать» — но на языке партнёра.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3 class="rowhead">DE/EU контур</h3>
+          <p>Продаёте клиентам локализацию данных и комплаенс-готовность как часть вашего сервиса.</p>
+        </div>
+        <div class="card">
+          <h3 class="rowhead">Быстрый пилот</h3>
+          <p>POC за дни, не недели: типовые конфигурации и референс-архитектуры.</p>
+        </div>
+        <div class="card">
+          <h3 class="rowhead">Backup как стандарт</h3>
+          <p>Local+Remote, политики хранения, понятная логика восстановления.</p>
+        </div>
+        <div class="card">
+          <h3 class="rowhead">2 зоны доступности</h3>
+          <p>Готовый аргумент для клиентов, которым важна устойчивость и DR.</p>
+        </div>
+        <div class="card">
+          <h3 class="rowhead">Поддержка 24/7</h3>
+          <p>Эскалация к инженерам, SLA на реакцию, помощь с инцидентами.</p>
+        </div>
+        <div class="card">
+          <h3 class="rowhead">Архитектура и миграции</h3>
+          <p>Помогаем упаковать проект: оценка → дизайн → запуск (вы продаёте ценность).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERS -->
+  <section id="offers">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>3 модели партнёрства (tiered offering)</h2>
+          <p>Как у лучших: клиент сам «узнаёт себя» и выбирает путь. Это снижает нагрузку на presales.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3 class="rowhead">Resell IaaS</h3>
+          <p>Вы продаёте инфраструктуру, добавляя свой сервис и поддержку. Идеально для SMB-клиентов.</p>
+          <ul class="list">
+            <li>пакеты “Start/Pro”</li>
+            <li>фиксируем маржу</li>
+            <li>быстрый запуск</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="rowhead">Managed Platform</h3>
+          <p>Вы управляете инфраструктурой клиента и берёте recurring revenue. Мы даём L2/L3 и SLA.</p>
+          <ul class="list">
+            <li>эскалации 24/7</li>
+            <li>опции managed</li>
+            <li>стандартизация</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="rowhead">Project-based Migrations</h3>
+          <p>Вы продаёте проекты: миграция, DR, security, оптимизация. Мы помогаем архитектурой и запуском.</p>
+          <ul class="list">
+            <li>оценка и план</li>
+            <li>POC</li>
+            <li>go-live</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECONOMICS -->
+  <section id="economics">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Экономика партнёрства (пример таблицы)</h2>
+          <p>Даже если вы не готовы публиковать реальные проценты — таблица как UX-паттерн работает отлично. Можно скрыть цифры за «Request terms».</p>
+        </div>
+        <span class="badge">Плейсхолдер</span>
+      </div>
+
+      <div class="card" style="overflow:auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Уровень</th>
+              <th>MRF / мес</th>
+              <th>Маржа / скидка</th>
+              <th>Что включено</th>
+              <th>CTA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="rowhead">Start</td>
+              <td>€0 – €999</td>
+              <td>до 10%*</td>
+              <td>Базовая поддержка, портал, референс-архитектуры</td>
+              <td><a class="btn small" href="#apply">Подать заявку</a></td>
+            </tr>
+            <tr>
+              <td class="rowhead">Growth</td>
+              <td>€1,000 – €4,999</td>
+              <td>до 18%*</td>
+              <td>AM, приоритетные эскалации, co-marketing материалы</td>
+              <td><a class="btn small" href="#apply">Запросить условия</a></td>
+            </tr>
+            <tr>
+              <td class="rowhead">Pro</td>
+              <td>€5,000+</td>
+              <td>до 25%*</td>
+              <td>Премиум SLA, совместные проекты, спец. условия</td>
+              <td><a class="btn small primary" href="#apply">Стать Pro</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="tiny" style="margin:10px 0 0">
+          *Цифры — пример для мокапа. Можно заменить на «индивидуальные условия» или показать диапазоны без процентов.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONBOARDING -->
+  <section id="onboarding">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Онбординг за 3 шага</h2>
+          <p>Паттерн OVH/IONOS: минимизируем friction и показываем путь к первому клиенту.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3 class="rowhead">1) Регистрация</h3>
+          <p>Подача заявки → доступ к партнёрским материалам и чек-листам.</p>
+        </div>
+        <div class="card">
+          <h3 class="rowhead">2) Demo / PoC</h3>
+          <p>Демо-ресурсы, референс-архитектуры и шаблоны коммерческих предложений.</p>
+        </div>
+        <div class="card">
+          <h3 class="rowhead">3) Первый клиент</h3>
+          <p>Совместный запуск: оценка → конфиг → миграция → SLA/поддержка.</p>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:12px">
+        <div class="card">
+          <h3 class="rowhead">Референс-архитектуры (пример)</h3>
+          <ul class="list">
+            <li>SMB Accounting: app + база + backup</li>
+            <li>SaaS: staging/prod + сеть + monitoring</li>
+            <li>Industry: storage + secure connectivity + HPC/GPU (опция)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="rowhead">Материалы для продаж</h3>
+          <ul class="list">
+            <li>One-pager “EU/DE cloud vs hyperscalers”</li>
+            <li>FAQ по комплаенсу и договорам</li>
+            <li>Шаблон предложения и калькулятор стоимости</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>FAQ партнёра</h2>
+          <p>Снимаем возражения ещё до разговора с менеджером (как Leaseweb).</p>
+        </div>
+      </div>
+
+      <details>
+        <summary>Можно ли работать non-exclusive?</summary>
+        <p class="tiny">Обычно это сильный аргумент для MSP: отсутствие эксклюзива снижает риск.</p>
+      </details>
+      <details>
+        <summary>Есть ли white-label / чей бренд у клиента?</summary>
+        <p class="tiny">Опишите модель: кто владелец аккаунта, как выглядят инвойсы и коммуникации.</p>
+      </details>
+      <details>
+        <summary>Как устроены эскалации и SLA поддержки?</summary>
+        <p class="tiny">Вставьте уровни поддержки (Business/Premium/…) и что включено в каждом.</p>
+      </details>
+      <details>
+        <summary>Как быстро поднять PoC для пресейла?</summary>
+        <p class="tiny">Опишите минимальный набор: 1–2 инстанса, сеть, backup, демо-данные.</p>
+      </details>
+      <details>
+        <summary>Какие ограничения на ресейл/использование?</summary>
+        <p class="tiny">Здесь обычно условия договора и допустимые сценарии.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <b>SIM-Networks • Archetype Mockup (A3)</b>
+    <p class="tiny" style="margin:6px 0 0">
+      HTML-мокап страницы партнёрской программы MSP. Блоки и таблицы можно упростить или насытить реальными цифрами.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
