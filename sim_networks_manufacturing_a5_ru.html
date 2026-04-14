@@ -59,6 +59,57 @@
   .icp-tags { display: flex; flex-wrap: wrap; gap: 5px; }
   .icp-tag { font-size: 10px; background: #f5f5f3; color: #777; padding: 2px 8px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.1); }
 
+  /* HORIZONTAL REGISTRATION FORM (after ICP) */
+  .reg-wrap { background: #042C53; border-radius: 12px; padding: 22px 20px; margin-top: 18px; }
+  .reg-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+  .reg-title { font-size: 16px; font-weight: 500; color: #E6F1FB; letter-spacing: -0.2px; }
+  .reg-sub { font-size: 12px; color: #85B7EB; line-height: 1.55; max-width: 520px; margin-top: 4px; }
+  .reg-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+  .reg-badge { font-size: 10px; color: #B5D4F4; border: 0.5px solid rgba(133,183,235,0.35); padding: 4px 10px; border-radius: 20px; }
+
+  .reg-form { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .reg-field { display: flex; flex-direction: column; gap: 6px; }
+  .reg-label { font-size: 11px; color: #B5D4F4; }
+  .reg-input, .reg-select, .reg-textarea {
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.14);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 13px;
+    color: #E6F1FB;
+    outline: none;
+  }
+  .reg-input::placeholder, .reg-textarea::placeholder { color: rgba(181,212,244,0.55); }
+  .reg-textarea { min-height: 92px; resize: vertical; }
+
+  .reg-span-2 { grid-column: span 2; }
+  .reg-span-3 { grid-column: 1 / -1; }
+
+  .reg-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
+  .reg-note { font-size: 11px; color: rgba(181,212,244,0.75); line-height: 1.4; max-width: 520px; }
+
+  .btn-accent {
+    background: #378ADD;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn-outline-light {
+    background: transparent;
+    color: #B5D4F4;
+    font-size: 13px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: 0.5px solid rgba(133,183,235,0.55);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
   /* CHALLENGE-BENEFIT */
   .cb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .cb-card { border: 0.5px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 18px 16px; }
@@ -105,6 +156,10 @@
 
   .page-label { font-size: 10px; color: #bbb; text-align: center; padding: 10px; letter-spacing: 0.5px; border-top: 0.5px solid rgba(0,0,0,0.06); }
 
+  @media (max-width: 900px) {
+    .reg-form { grid-template-columns: repeat(2, 1fr); }
+  }
+
   @media (max-width: 700px) {
     .hero-inner { grid-template-columns: 1fr; }
     .icp-grid { grid-template-columns: 1fr; }
@@ -115,6 +170,9 @@
     .journey-step { border-right: none; border-bottom: 0.5px solid rgba(0,0,0,0.08); }
     .cta-band { flex-direction: column; align-items: flex-start; }
     .cta-band-btns { align-items: flex-start; }
+    .reg-form { grid-template-columns: 1fr; }
+    .reg-span-2 { grid-column: span 1; }
+    .reg-actions { justify-content: flex-start; }
   }
 </style>
 </head>
@@ -209,6 +267,117 @@
           <span class="icp-tag">Совместимо с Gaia-X</span>
         </div>
       </div>
+    </div>
+
+    <!-- HORIZONTAL FORM INSERTED HERE -->
+    <div class="reg-wrap">
+      <div class="reg-head">
+        <div>
+          <div class="reg-title">Запрос консультации / POC по промышленным нагрузкам</div>
+          <div class="reg-sub">
+            Заполните поля — и мы вернёмся с предложением архитектуры (HPC / CAD-PLM / DR / IIoT) и планом пилота.
+          </div>
+        </div>
+        <div class="reg-badges">
+          <span class="reg-badge">EU / DE jurisdiction</span>
+          <span class="reg-badge">POC за 1–2 недели</span>
+          <span class="reg-badge">Security & Compliance</span>
+        </div>
+      </div>
+
+      <form class="reg-form" action="#" method="post">
+        <div class="reg-field">
+          <label class="reg-label" for="r_name">Имя</label>
+          <input class="reg-input" id="r_name" name="name" type="text" placeholder="Denys" />
+        </div>
+
+        <div class="reg-field">
+          <label class="reg-label" for="r_email">Email</label>
+          <input class="reg-input" id="r_email" name="email" type="email" placeholder="you@company.com" />
+        </div>
+
+        <div class="reg-field">
+          <label class="reg-label" for="r_phone">Телефон (опционально)</label>
+          <input class="reg-input" id="r_phone" name="phone" type="tel" placeholder="+49 … / +48 …" />
+        </div>
+
+        <div class="reg-field reg-span-2">
+          <label class="reg-label" for="r_company">Компания / сайт</label>
+          <input class="reg-input" id="r_company" name="company" type="text" placeholder="Название компании / URL" />
+        </div>
+
+        <div class="reg-field">
+          <label class="reg-label" for="r_country">Страна</label>
+          <select class="reg-select" id="r_country" name="country">
+            <option>Германия</option>
+            <option>Австрия</option>
+            <option>Швейцария</option>
+            <option>Польша</option>
+            <option>Чехия</option>
+            <option>Нидерланды</option>
+            <option>Бельгия</option>
+            <option>Франция</option>
+            <option>Украина</option>
+            <option>Другая</option>
+          </select>
+        </div>
+
+        <div class="reg-field">
+          <label class="reg-label" for="r_profile">Ваш профиль (из 3)</label>
+          <select class="reg-select" id="r_profile" name="profile">
+            <option>Стратегические данные (R&D/IP)</option>
+            <option>Критическая инфраструктура (NIS2/OES)</option>
+            <option>Цифровая трансформация (Industry 4.0 / IIoT)</option>
+          </select>
+        </div>
+
+        <div class="reg-field">
+          <label class="reg-label" for="r_usecase">Сценарий</label>
+          <select class="reg-select" id="r_usecase" name="usecase">
+            <option>CAD / PLM / инженерные данные</option>
+            <option>HPC / расчёты / симуляции</option>
+            <option>DR / BCP (аварийное восстановление)</option>
+            <option>IIoT / data lake / MES-ERP интеграция</option>
+            <option>Гибрид: on-prem + EU cloud</option>
+          </select>
+        </div>
+
+        <div class="reg-field">
+          <label class="reg-label" for="r_data">Объём данных</label>
+          <select class="reg-select" id="r_data" name="data_volume">
+            <option>до 1 TB</option>
+            <option>1–5 TB</option>
+            <option>5–20 TB</option>
+            <option>20+ TB</option>
+          </select>
+        </div>
+
+        <div class="reg-field">
+          <label class="reg-label" for="r_timeline">Таймлайн</label>
+          <select class="reg-select" id="r_timeline" name="timeline">
+            <option>Нужен пилот в ближайшие 2–4 недели</option>
+            <option>Запуск в 1–2 месяца</option>
+            <option>План на квартал</option>
+            <option>Пока исследуем</option>
+          </select>
+        </div>
+
+        <div class="reg-field reg-span-3">
+          <label class="reg-label" for="r_msg">Комментарий</label>
+          <textarea class="reg-textarea" id="r_msg" name="message"
+            placeholder="Какие системы/нагрузки? Требования по комплаенсу (GDPR/NIS2), ожидания по SLA, VPN/каналам, типам хранилища..."></textarea>
+        </div>
+
+        <div class="reg-field reg-span-3" style="display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+          <div class="reg-note">
+            Нажимая «Отправить», вы соглашаетесь на связь по заявке. (Mockup — тексты и поля можно адаптировать.)
+          </div>
+          <div class="reg-actions">
+            <button class="btn-accent" type="submit">Отправить заявку</button>
+            <button class="btn-outline-light" type="button">Скачать чек-лист POC</button>
+          </div>
+        </div>
+      </form>
     </div>
   </section>
 
