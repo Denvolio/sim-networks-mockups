@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SIM-Networks — Retail / E-commerce / Omnichannel (A6) — Бесплатная консультация</title>
+<style>
+  :root{
+    --brand:#1c67b8;
+    --brand2:#0f4f92;
+    --bg:#f3f7fb;
+    --card:#ffffff;
+    --text:#0f1b2d;
+    --muted:#5c6b80;
+    --line:rgba(15,27,45,.10);
+    --shadow:0 14px 40px rgba(16, 35, 74, 0.08);
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    color:var(--text);
+    background:var(--bg);
+  }
+  a{color:inherit}
+  .page{max-width:1040px;margin:0 auto;background:#fff;box-shadow:0 0 0 .5px rgba(0,0,0,.06)}
+  .container{padding:0 22px}
+
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 22px;border-bottom:1px solid var(--line);
+    background:#fff;
+    gap:12px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px;letter-spacing:-.2px;white-space:nowrap}
+  .brand-badge{
+    width:28px;height:28px;border-radius:8px;
+    background:linear-gradient(135deg,var(--brand),#3aa3ff);
+    box-shadow:0 10px 22px rgba(28,103,184,.25);
+  }
+  .menu{display:flex;gap:18px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+  .menu a{padding:6px 8px;border-radius:10px;text-decoration:none}
+  .menu a:hover{background:rgba(28,103,184,.08);color:var(--brand2)}
+  .menu .active{color:var(--brand2);font-weight:600}
+  .top-cta{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .btn{
+    border:1px solid rgba(28,103,184,.25);
+    background:#fff;
+    color:var(--brand2);
+    padding:9px 14px;border-radius:999px;font-size:13px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .btn.primary{
+    border:none;color:#fff;background:var(--brand);
+    box-shadow:0 12px 26px rgba(28,103,184,.22);
+  }
+  .btn.white{background:#fff;color:#0e4b8b;border:none}
+  .btn.ghost{background:transparent;color:#eaf4ff;border:1px solid rgba(255,255,255,.35)}
+
+  .hero{
+    background:linear-gradient(180deg, #0e4b8b, #1766b6);
+    color:#eaf4ff;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-inner{
+    padding:28px 22px 18px;
+    display:grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap:18px;
+    align-items:start;
+  }
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 10px;border-radius:999px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.16);
+    font-size:12px;color:rgba(234,244,255,.92);
+    margin-bottom:10px;
+  }
+  .hero h1{margin:0 0 10px;font-size:26px;line-height:1.22;letter-spacing:-.3px}
+  .hero p{margin:0 0 14px;color:rgba(234,244,255,.88);font-size:13px;line-height:1.6}
+  .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+
+  .waves{
+    height:26px;
+    background:
+      radial-gradient(circle at 10px 10px, rgba(255,255,255,.65) 6px, transparent 7px) 0 0/30px 26px repeat-x;
+    opacity:.65;
+  }
+
+  .anti-box{
+    background:#042C53;
+    border-radius:16px;
+    padding:16px 16px;
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 18px 34px rgba(0,0,0,.18);
+  }
+  .anti-box-label{
+    font-size:11px;
+    color:#85B7EB;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    margin-bottom:10px;
+  }
+  .anti-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:9px 0;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    gap:10px;
+    font-size:12px;
+  }
+  .anti-row:last-child{border-bottom:none}
+  .anti-issue{color:#B5D4F4;flex:1;line-height:1.35}
+  .anti-badges{display:flex;gap:6px;flex-shrink:0}
+  .anti-badge{
+    font-size:10px;
+    font-weight:800;
+    padding:3px 8px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .anti-bad{background:rgba(226,75,74,0.18);color:#F09595}
+  .anti-good{background:rgba(55,138,221,0.22);color:#B5D4F4}
+
+  .section{padding:26px 0;border-bottom:1px solid var(--line)}
+  .sec-title{margin:0 0 6px;font-size:18px;letter-spacing:-.2px}
+  .sec-sub{margin:0 0 16px;color:var(--muted);font-size:13px;line-height:1.55;max-width:780px}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:14px;
+    min-height:112px;
+  }
+  .icon{
+    width:34px;height:34px;border-radius:12px;
+    background:rgba(28,103,184,.10);
+    border:1px solid rgba(28,103,184,.18);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--brand2);font-weight:900;margin-bottom:10px;
+    font-size:13px;
+  }
+  .card h4{margin:0 0 6px;font-size:13px}
+  .card p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .tile{
+    border-radius:16px;
+    border:1px solid var(--line);
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    background:linear-gradient(180deg,#e9f2ff,#ffffff);
+    position:relative;
+    min-height:112px;
+    padding:14px;
+  }
+  .tile.dark{
+    background:linear-gradient(180deg,#0e4b8b,#0a3563);
+    color:#eaf4ff;
+    border-color:rgba(255,255,255,.08);
+  }
+  .tile h4{margin:0 0 6px;font-size:13px}
+  .tile p{margin:0;color:rgba(92,107,128,.95);font-size:12px;line-height:1.45}
+  .tile.dark p{color:rgba(234,244,255,.82)}
+  .tile .play{
+    position:absolute;right:12px;bottom:12px;
+    width:28px;height:28px;border-radius:10px;
+    border:1px solid rgba(28,103,184,.25);
+    background:rgba(255,255,255,.70);
+    display:flex;align-items:center;justify-content:center;
+    color:#0e4b8b;font-weight:900;
+  }
+  .tile.dark .play{
+    background:rgba(255,255,255,.16);
+    border-color:rgba(255,255,255,.25);
+    color:#fff;
+  }
+
+  .reg-wrap{
+    margin-top:14px;
+    background:#fff;
+    border:1px solid rgba(15,27,45,.10);
+    border-radius:18px;
+    padding:18px 18px;
+    box-shadow:var(--shadow);
+  }
+  .reg-head{
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start;margin-bottom:12px;
+  }
+  .reg-title{font-size:16px;font-weight:900;letter-spacing:-.2px;color:#0f1b2d}
+  .reg-sub{font-size:12px;line-height:1.55;color:var(--muted);max-width:740px;margin-top:6px}
+  .reg-badges{display:flex;gap:8px;flex-wrap:wrap}
+  .reg-badge{
+    font-size:10px;font-weight:900;
+    padding:4px 10px;border-radius:999px;
+    border:1px solid rgba(28,103,184,.20);
+    color:#0f4f92;
+    background:rgba(28,103,184,.08);
+    white-space:nowrap;
+  }
+
+  .reg-form{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .field{display:flex;flex-direction:column;gap:6px}
+  .label{font-size:11px;color:#40526a}
+  .input, .select, .textarea{
+    width:100%;
+    border-radius:12px;
+    border:1px solid rgba(15,27,45,.14);
+    background:#f7fbff;
+    padding:10px 10px;
+    color:#0f1b2d;
+    outline:none;
+    font-size:13px;
+  }
+  .textarea{min-height:86px;resize:vertical}
+  .span-2{grid-column: span 2;}
+  .span-4{grid-column: 1 / -1;}
+
+  .calendar-box{
+    border:1px dashed rgba(28,103,184,.30);
+    background:rgba(28,103,184,.06);
+    border-radius:14px;
+    padding:12px;
+  }
+  .calendar-box b{display:block;font-size:12px;margin-bottom:8px;color:#0f4f92}
+  .calendar-box span{display:block;font-size:12px;color:var(--muted);line-height:1.45}
+  .slot-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .slot{
+    font-size:12px;font-weight:900;
+    padding:8px 10px;border-radius:12px;
+    border:1px solid rgba(15,27,45,.14);
+    background:#fff;
+    cursor:pointer;
+    user-select:none;
+  }
+  .slot.active{background:#0f4f92;color:#fff;border-color:#0f4f92}
+
+  .reg-actions{
+    display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px;
+  }
+  .note{font-size:11px;line-height:1.4;color:var(--muted);max-width:760px}
+  .cta-row{display:flex;gap:10px;flex-wrap:wrap}
+  .btn-solid{
+    background:#0f4f92;color:#fff;border:none;
+    padding:10px 14px;border-radius:999px;
+    font-weight:900;cursor:pointer;
+  }
+  .btn-outline{
+    background:#fff;color:#0f4f92;
+    border:1px solid rgba(28,103,184,.30);
+    padding:10px 14px;border-radius:999px;
+    font-weight:900;cursor:pointer;
+  }
+
+  .success{
+    display:none;
+    border-radius:14px;
+    padding:12px;
+    background:rgba(28,103,184,.10);
+    border:1px solid rgba(28,103,184,.18);
+    color:#0e4b8b;
+    font-size:12px;
+    line-height:1.45;
+    margin-top:10px;
+  }
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .step{
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:14px;
+    background:#fff;
+    box-shadow:var(--shadow);
+  }
+  .step .n{font-size:22px;font-weight:900;color:rgba(28,103,184,.25);margin-bottom:6px}
+  .step h4{margin:0 0 6px;font-size:13px}
+  .step p{margin:0;color:var(--muted);font-size:12px;line-height:1.45}
+
+  .gate{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    padding:16px;
+    display:grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap:14px;
+    align-items:start;
+  }
+  .gate h3{margin:0 0 8px;font-size:14px}
+  .gate ul{margin:0 0 0 18px;color:var(--muted);font-size:12px;line-height:1.6}
+  .gate-form{display:grid;gap:10px}
+  .gate-form .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .gate input{
+    width:100%;
+    padding:10px 10px;border-radius:12px;
+    border:1px solid rgba(15,27,45,.14);
+    background:#f7fbff;
+    font-size:13px;
+    outline:none;
+  }
+  .gate small{color:var(--muted);font-size:11px;line-height:1.4}
+  .gate-btn{
+    border:none;background:var(--brand);color:#fff;
+    padding:10px 14px;border-radius:999px;
+    font-weight:900;cursor:pointer;
+  }
+  .player{
+    display:none;
+    border-radius:14px;
+    padding:14px;
+    background:linear-gradient(180deg,#0e4b8b,#1766b6);
+    color:#eaf4ff;
+  }
+  .player b{display:block;margin-bottom:6px;font-size:13px}
+  .player span{font-size:12px;opacity:.9;line-height:1.5}
+
+  .faq{display:grid;gap:10px}
+  details{
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:12px 12px;
+    background:#fff;
+  }
+  summary{cursor:pointer;font-weight:900;font-size:13px}
+  summary::-webkit-details-marker{display:none}
+  details p{margin:10px 0 0;color:var(--muted);font-size:12px;line-height:1.55}
+
+  .final{
+    margin:18px 0 0;
+    border-radius:18px;
+    padding:18px;
+    background:linear-gradient(180deg,#0e4b8b,#1766b6);
+    color:#eaf4ff;
+    display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center;
+  }
+  .final h3{margin:0 0 6px;font-size:16px}
+  .final p{margin:0;color:rgba(234,244,255,.85);font-size:12px;line-height:1.55;max-width:560px}
+  .final .cta{display:flex;gap:10px;flex-wrap:wrap}
+
+  .footer{
+    background:#0e4b8b;color:rgba(234,244,255,.88);
+    padding:18px 22px;
+    margin-top:18px;
+  }
+  .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .footer h4{margin:0 0 8px;font-size:12px;color:#fff}
+  .footer a{display:block;color:rgba(234,244,255,.78);text-decoration:none;font-size:12px;margin:6px 0}
+  .footer a:hover{color:#fff}
+  .footnote{margin-top:12px;font-size:11px;color:rgba(234,244,255,.60)}
+
+  @media (max-width: 980px){
+    .menu{display:none}
+    .hero-inner{grid-template-columns:1fr}
+    .cards{grid-template-columns:1fr}
+    .tiles{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .gate{grid-template-columns:1fr}
+    .gate-form .row{grid-template-columns:1fr}
+    .footer-grid{grid-template-columns:1fr 1fr}
+    .reg-form{grid-template-columns:repeat(2,1fr)}
+    .span-2{grid-column: span 2;}
+  }
+  @media (max-width: 700px){
+    .top-cta{display:none}
+    .footer-grid{grid-template-columns:1fr}
+    .reg-form{grid-template-columns:1fr}
+    .span-2{grid-column: 1 / -1;}
+  }
+</style>
+</head>
+
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <div class="brand"><span class="brand-badge"></span> SIM-Networks</div>
+
+    <nav class="menu" aria-label="Главное меню">
+      <a href="#">Продукты и услуги</a>
+      <a class="active" href="#">Решения</a>
+      <a href="#">Поддержка</a>
+      <a href="#">Блог</a>
+      <a href="#">О нас</a>
+    </nav>
+
+    <div class="top-cta">
+      <button class="btn" onclick="document.getElementById('video').scrollIntoView({behavior:'smooth'})">Смотреть видео</button>
+      <button class="btn primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Бесплатная консультация</button>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">A6 · Retail / E-commerce / Omnichannel · DACH + Україна</div>
+
+        <h1>Инфраструктура для e-commerce: держим checkout стабильным на пиках и убираем риски дорогого трафика</h1>
+        <p>
+          Бесплатная консультация по выбору/аудиту инфраструктуры для e-commerce: пиковые нагрузки, устойчивость,
+          безопасность, контроль трафика и план миграции без потери заказов. Под EU-контур и требования платежных сценариев.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn white" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Забронировать консультацию</button>
+          <button class="btn ghost" onclick="document.getElementById('video').scrollIntoView({behavior:'smooth'})">On-demand видео (email)</button>
+        </div>
+      </div>
+
+      <div class="anti-box">
+        <div class="anti-box-label">Публичное облако vs. SIM-Networks (E-commerce)</div>
+
+        <div class="anti-row">
+          <span class="anti-issue">Пики нагрузки без просадок checkout</span>
+          <div class="anti-badges">
+            <span class="anti-badge anti-bad">Зависит</span>
+            <span class="anti-badge anti-good">План</span>
+          </div>
+        </div>
+
+        <div class="anti-row">
+          <span class="anti-issue">Контроль стоимости трафика и сетевых расходов</span>
+          <div class="anti-badges">
+            <span class="anti-badge anti-bad">Сюрпризы</span>
+            <span class="anti-badge anti-good">Прозрачно</span>
+          </div>
+        </div>
+
+        <div class="anti-row">
+          <span class="anti-issue">Защита от атак и всплесков бот-трафика</span>
+          <div class="anti-badges">
+            <span class="anti-badge anti-bad">Опция</span>
+            <span class="anti-badge anti-good">Подход</span>
+          </div>
+        </div>
+
+        <div class="anti-row">
+          <span class="anti-issue">Бэкапы и восстановление (каталог/заказы)</span>
+          <div class="anti-badges">
+            <span class="anti-badge anti-bad">Вручную</span>
+            <span class="anti-badge anti-good">План</span>
+          </div>
+        </div>
+
+        <div class="anti-row">
+          <span class="anti-issue">Поддержка 24/7 + SLA/эскалации</span>
+          <div class="anti-badges">
+            <span class="anti-badge anti-bad">Очередь</span>
+            <span class="anti-badge anti-good">Эскалация</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="waves"></div>
+  </section>
+
+  <div class="container">
+
+    <section class="section">
+      <h2 class="sec-title">Почему консультация особенно полезна e-commerce командам</h2>
+      <p class="sec-sub">
+        В e-commerce ошибки инфраструктуры быстро превращаются в потерю выручки: просадка checkout, медленный каталог,
+        атаки и дорогой трафик. Консультация помогает быстро зафиксировать риски и план действий.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icon">1</div>
+          <h4>Пики нагрузки и сезонность</h4>
+          <p>Готовим схему под распродажи, кампании и “внезапные” всплески, чтобы не терять заказы.</p>
+        </div>
+        <div class="card">
+          <div class="icon">2</div>
+          <h4>Checkout и платежные сценарии</h4>
+          <p>Убираем узкие места в критической цепочке: корзина → оплата → подтверждение.</p>
+        </div>
+        <div class="card">
+          <div class="icon">3</div>
+          <h4>Стоимость трафика</h4>
+          <p>Разбираем, где вы переплачиваете за сеть/выдачу контента, и как сделать стоимость предсказуемой.</p>
+        </div>
+        <div class="card">
+          <div class="icon">4</div>
+          <h4>Атаки и бот-трафик</h4>
+          <p>Стратегия защиты и операционки: мониторинг, фильтрации, базовые меры против всплесков.</p>
+        </div>
+        <div class="card">
+          <div class="icon">5</div>
+          <h4>База, каталог, заказы</h4>
+          <p>План по data-layer: производительность, бэкапы, восстановление и контроль изменений.</p>
+        </div>
+        <div class="card">
+          <div class="icon">6</div>
+          <h4>Миграция без потери продаж</h4>
+          <p>Пошаговый переход: тест → частичный трафик → переключение с планом отката.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="sec-title">Под какие e-commerce сценарии чаще всего нужна консультация</h2>
+      <p class="sec-sub">Выберите ситуацию, которая ближе к вашей, и мы быстро подскажем архитектурный путь.</p>
+
+      <div class="tiles">
+        <div class="tile dark">
+          <h4>Пики продаж</h4>
+          <p>Акции, распродажи, инфлюенсер-трафик, сезонность.</p>
+          <div class="play">▶</div>
+        </div>
+        <div class="tile">
+          <h4>Checkout & Payments</h4>
+          <p>Критический путь заказа: скорость, устойчивость, ошибки.</p>
+          <div class="play">▶</div>
+        </div>
+        <div class="tile">
+          <h4>Каталог и поиск</h4>
+          <p>Быстрый UX, кеши, индексы, стабильность выдачи.</p>
+          <div class="play">▶</div>
+        </div>
+        <div class="tile">
+          <h4>Доставка и интеграции</h4>
+          <p>ERP/CRM/WMS, внешние API, очереди, надежность.</p>
+          <div class="play">▶</div>
+        </div>
+        <div class="tile dark">
+          <h4>Security</h4>
+          <p>Всплески, боты, атаки, мониторинг, контроль доступа.</p>
+          <div class="play">▶</div>
+        </div>
+        <div class="tile">
+          <h4>Migration</h4>
+          <p>Переезд без потери заказов и с планом отката.</p>
+          <div class="play">▶</div>
+        </div>
+      </div>
+
+      <div class="reg-wrap" id="booking">
+        <div class="reg-head">
+          <div>
+            <div class="reg-title">Бесплатная консультация по инфраструктуре (15–30 минут)</div>
+            <div class="reg-sub">
+              Минимум полей: имя, компания, email, роль, короткий комментарий. Выберите слот — получите инвайт и чек-лист.
+            </div>
+          </div>
+          <div class="reg-badges">
+            <span class="reg-badge">Архитектура</span>
+            <span class="reg-badge">Risk-карта</span>
+            <span class="reg-badge">POC план</span>
+          </div>
+        </div>
+
+        <form class="reg-form" onsubmit="return mockBook(event)">
+          <div class="field">
+            <div class="label">Имя</div>
+            <input class="input" placeholder="Denys" required />
+          </div>
+          <div class="field">
+            <div class="label">Компания</div>
+            <input class="input" placeholder="Company / URL" required />
+          </div>
+          <div class="field">
+            <div class="label">Email</div>
+            <input class="input" type="email" placeholder="you@company.com" required />
+          </div>
+          <div class="field">
+            <div class="label">Роль</div>
+            <select class="select" required>
+              <option value="">Выберите…</option>
+              <option>Head of E-commerce</option>
+              <option>CTO / Head of Engineering</option>
+              <option>DevOps / SRE</option>
+              <option>Product / PM</option>
+              <option>Security</option>
+            </select>
+          </div>
+
+          <div class="field span-2">
+            <div class="label">Короткий комментарий</div>
+            <input class="input" placeholder="Пики, медленный каталог, ошибки оплаты, атаки, трафик, миграция…" />
+          </div>
+
+          <div class="field span-2">
+            <div class="label">Выбор времени</div>
+            <div class="calendar-box">
+              <b>Выберите слот</b>
+              <span>Подберём специалиста под ваш сценарий: пики/checkout/data/security.</span>
+              <div class="slot-row" id="slots">
+                <div class="slot active">Сегодня 15:00</div>
+                <div class="slot">Сегодня 17:00</div>
+                <div class="slot">Завтра 11:00</div>
+                <div class="slot">Завтра 16:00</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field span-4">
+            <div class="label">Дополнительно</div>
+            <textarea class="textarea" placeholder="Платформа (Shopify/Magento/Custom), регионы, требования к SLA, RTO/RPO…"></textarea>
+          </div>
+
+          <div class="reg-actions span-4">
+            <div class="note">
+              После брони вы получите календарный инвайт и короткий чек-лист, чтобы консультация была максимально точной.
+            </div>
+            <div class="cta-row">
+              <button class="btn-solid" type="submit">Забронировать</button>
+              <button class="btn-outline" type="button" onclick="document.getElementById('video').scrollIntoView({behavior:'smooth'})">Сначала видео</button>
+            </div>
+          </div>
+
+          <div class="success" id="bookSuccess">
+            ✅ Заявка отправлена. Мы вышлем инвайт и чек-лист.
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="sec-title">Как проходит консультация</h2>
+      <p class="sec-sub">Коротко и по делу: входные данные → анализ → план действий.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="n">01</div>
+          <h4>Входные данные</h4>
+          <p>Платформа, пики, критические страницы, интеграции, цели.</p>
+        </div>
+        <div class="step">
+          <div class="n">02</div>
+          <h4>Анализ</h4>
+          <p>Узкие места: checkout, data-layer, сеть, кеши, безопасность, стоимость трафика.</p>
+        </div>
+        <div class="step">
+          <div class="n">03</div>
+          <h4>План</h4>
+          <p>1–2 варианта архитектуры, риски, POC и последовательность внедрения.</p>
+        </div>
+      </div>
+
+      <div class="final" style="margin-top:16px;">
+        <div>
+          <h3>Хотите стабилизировать ваш e-commerce перед следующими пиками?</h3>
+          <p>15–30 минут. Получите архитектурные варианты, risk-карту и план next steps.</p>
+        </div>
+        <div class="cta">
+          <button class="btn white" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Забронировать консультацию</button>
+          <button class="btn ghost" onclick="document.getElementById('video').scrollIntoView({behavior:'smooth'})">Смотреть видео</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="video">
+      <h2 class="sec-title">On-demand видео</h2>
+      <p class="sec-sub">Кейсы и типовые сценарии e-commerce. Доступ через email.</p>
+
+      <div class="gate">
+        <div>
+          <h3>Что внутри (10–15 минут)</h3>
+          <ul>
+            <li>Кейсы по устойчивости checkout и подготовке к пикам</li>
+            <li>Как управлять трафиком и стоимостью сети</li>
+            <li>Список метрик для POC и проверки гипотез</li>
+          </ul>
+        </div>
+
+        <div class="gate-form">
+          <div class="success" id="gateSuccess">
+            ✅ Ссылка отправлена на email. Ниже доступен просмотр.
+          </div>
+
+          <div class="row">
+            <input id="gateEmail" type="email" placeholder="Email" required />
+            <input id="gateCompany" type="text" placeholder="Компания (опционально)" />
+          </div>
+
+          <button class="gate-btn" id="gateBtn" type="button">Получить доступ</button>
+
+          <div class="player" id="player">
+            <b>Видео</b>
+            <span>Кейсы, сценарии, рекомендации по инфраструктуре и подготовке к пикам.</span>
+          </div>
+
+          <small>
+            Вы получите ссылку на видео и 1–2 письма по теме. Отписка — в один клик.
+          </small>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="sec-title">FAQ для e-commerce</h2>
+      <p class="sec-sub">Самые частые вопросы про пики, безопасность, миграции и стоимость.</p>
+
+      <div class="faq">
+        <details>
+          <summary>Можно ли подготовиться к Black Friday/акциям без полного редизайна системы?</summary>
+          <p>Да. Обычно достаточно точечных изменений: кеши, очереди, разделение критичных компонентов, контроль трафика и план отката.</p>
+        </details>
+        <details>
+          <summary>Что важнее: больше серверов или правильная архитектура?</summary>
+          <p>В большинстве случаев архитектура. Мы сначала фиксируем узкие места и только потом добавляем ресурсы там, где это действительно нужно.</p>
+        </details>
+        <details>
+          <summary>Как не потерять заказы при миграции?</summary>
+          <p>Пошаговый план: тест → частичный трафик → переключение, с мониторингом и rollback-сценарием.</p>
+        </details>
+        <details>
+          <summary>Как защищаться от атак и бот-трафика?</summary>
+          <p>Уровни защиты зависят от вашей ситуации. На консультации выбираем базовый набор мер и операционную модель мониторинга/реакции.</p>
+        </details>
+        <details>
+          <summary>Как контролировать стоимость сети и трафика?</summary>
+          <p>Сначала выявляем драйверы расходов, затем выбираем подход: оптимизация выдачи, кеширование, ограничения и понятные правила маршрутизации.</p>
+        </details>
+        <details>
+          <summary>Сколько времени до первого результата?</summary>
+          <p>Обычно 1–2 недели достаточно для пилота и проверки гипотез. Дальше — внедрение по приоритетам.</p>
+        </details>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4>Облако</h4>
+        <a href="#">Облачный сервер</a>
+        <a href="#">Частное облако</a>
+        <a href="#">Облако с GPU</a>
+      </div>
+      <div>
+        <h4>Серверы</h4>
+        <a href="#">Выделенные серверы</a>
+        <a href="#">VPS</a>
+        <a href="#">Хранилища данных</a>
+      </div>
+      <div>
+        <h4>Ресурсы</h4>
+        <a href="#">Блог</a>
+        <a href="#">Кейсы</a>
+        <a href="#">Документация</a>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <a href="#">sales@sim-networks.com</a>
+        <a href="#">Поддержка 24/7</a>
+        <a href="#">Заказать звонок</a>
+      </div>
+    </div>
+    <div class="footnote">SIM-Networks — Retail / E-commerce / Omnichannel</div>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.slot').forEach(s=>{
+    s.addEventListener('click', ()=>{
+      document.querySelectorAll('.slot').forEach(x=>x.classList.remove('active'));
+      s.classList.add('active');
+    });
+  });
+
+  function mockBook(e){
+    e.preventDefault();
+    const box = document.getElementById('bookSuccess');
+    box.style.display='block';
+    box.scrollIntoView({behavior:'smooth', block:'center'});
+    return false;
+  }
+
+  document.getElementById('gateBtn').addEventListener('click', ()=>{
+    const email = document.getElementById('gateEmail').value.trim();
+    if(!email){
+      alert('Введите email.');
+      return;
+    }
+    document.getElementById('gateSuccess').style.display='block';
+    document.getElementById('player').style.display='block';
+    document.getElementById('player').scrollIntoView({behavior:'smooth', block:'center'});
+  });
+</script>
+</body>
+</html>
