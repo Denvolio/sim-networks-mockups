@@ -25,17 +25,18 @@
     background:var(--bg);
   }
   a{color:inherit}
-  .page{max-width:980px;margin:0 auto;background:#fff;box-shadow:0 0 0 0.5px rgba(0,0,0,.06)}
-  /* ======= top nav (в стиле вашего сайта) ======= */
+  .page{max-width:1040px;margin:0 auto;background:#fff;box-shadow:0 0 0 .5px rgba(0,0,0,.06)}
+  .container{padding:0 22px}
+
+  /* ======= Top nav (как на скрине SaaS) ======= */
   .topbar{
     display:flex;align-items:center;justify-content:space-between;
     padding:12px 22px;border-bottom:1px solid var(--line);
     background:#fff;
+    gap:12px;
   }
-  .logo{
-    display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px;letter-spacing:-.2px;
-  }
-  .logo-badge{
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px;letter-spacing:-.2px;white-space:nowrap}
+  .brand-badge{
     width:28px;height:28px;border-radius:8px;
     background:linear-gradient(135deg,var(--brand),#3aa3ff);
     box-shadow:0 10px 22px rgba(28,103,184,.25);
@@ -44,22 +45,21 @@
   .menu a{padding:6px 8px;border-radius:10px;text-decoration:none}
   .menu a:hover{background:rgba(28,103,184,.08);color:var(--brand2)}
   .menu .active{color:var(--brand2);font-weight:600}
-  .top-cta{
-    display:flex;gap:10px;align-items:center;flex-wrap:wrap;
-  }
+  .top-cta{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
   .btn{
     border:1px solid rgba(28,103,184,.25);
     background:#fff;
     color:var(--brand2);
-    padding:9px 14px;border-radius:12px;font-size:13px;
+    padding:9px 14px;border-radius:999px;font-size:13px;
     cursor:pointer;
+    white-space:nowrap;
   }
   .btn.primary{
     border:none;color:#fff;background:var(--brand);
     box-shadow:0 12px 26px rgba(28,103,184,.22);
   }
 
-  /* ======= hero (синий как на вашем сайте) ======= */
+  /* ======= Hero (синий, как у вас) ======= */
   .hero{
     background:linear-gradient(180deg, #0e4b8b, #1766b6);
     color:#eaf4ff;
@@ -71,28 +71,33 @@
     display:grid;
     grid-template-columns: 1.15fr .85fr;
     gap:18px;
-    align-items:stretch;
+    align-items:start;
   }
-  .hero h1{margin:0 0 10px;font-size:24px;line-height:1.25;letter-spacing:-.3px}
-  .hero p{margin:0 0 14px;color:rgba(234,244,255,.88);font-size:13px;line-height:1.6}
-  .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-  .pill{
-    font-size:11px;
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
     padding:6px 10px;border-radius:999px;
     background:rgba(255,255,255,.12);
     border:1px solid rgba(255,255,255,.16);
-    color:rgba(234,244,255,.92);
+    font-size:12px;color:rgba(234,244,255,.92);
+    margin-bottom:10px;
+  }
+  .hero h1{margin:0 0 10px;font-size:26px;line-height:1.22;letter-spacing:-.3px}
+  .hero p{margin:0 0 14px;color:rgba(234,244,255,.88);font-size:13px;line-height:1.6}
+  .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .btn.white{background:#fff;color:#0e4b8b;border:none}
+  .btn.ghost{background:transparent;color:#eaf4ff;border:1px solid rgba(255,255,255,.35)}
+
+  .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .pill{
+    font-size:11px;
+    padding:6px 10px;border-radius:999px;
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.16);
+    color:rgba(234,244,255,.90);
     white-space:nowrap;
   }
-  .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-  .btn.white{
-    background:#fff;color:#0e4b8b;border:none;
-  }
-  .btn.ghost{
-    background:transparent;color:#eaf4ff;border:1px solid rgba(255,255,255,.35)
-  }
 
-  /* “волны” как у вас (упрощённо) */
+  /* “волны” (упрощённо) */
   .waves{
     height:26px;
     background:
@@ -100,88 +105,68 @@
     opacity:.65;
   }
 
-  /* ======= right hero card: booking (primary conversion) ======= */
-  .hero-card{
-    background:rgba(255,255,255,.10);
-    border:1px solid rgba(255,255,255,.18);
-    border-radius:18px;
-    padding:14px;
-    backdrop-filter: blur(6px);
+  /* ======= Right hero comparison box (как в прошлых вариантах) ======= */
+  .anti-box{
+    background:#042C53;
+    border-radius:16px;
+    padding:16px 16px;
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 18px 34px rgba(0,0,0,.18);
   }
-  .hero-card h3{
-    margin:0 0 10px;
-    font-size:13px;
-    letter-spacing:.4px;
+  .anti-box-label{
+    font-size:11px;
+    color:#85B7EB;
     text-transform:uppercase;
-    color:rgba(234,244,255,.92);
+    letter-spacing:.6px;
+    margin-bottom:10px;
   }
-  .grid-form{
-    display:grid;
-    grid-template-columns:1fr 1fr;
+  .anti-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:9px 0;
+    border-bottom:1px solid rgba(255,255,255,0.08);
     gap:10px;
-  }
-  .grid-form .full{grid-column:1/-1}
-  .label{font-size:11px;color:rgba(234,244,255,.8)}
-  .input, .select, .textarea{
-    width:100%;
-    margin-top:6px;
-    padding:10px 10px;
-    border-radius:12px;
-    border:1px solid rgba(255,255,255,.20);
-    background:rgba(9,27,60,.22);
-    color:#eaf4ff;
-    outline:none;
-    font-size:13px;
-  }
-  .input::placeholder,.textarea::placeholder{color:rgba(234,244,255,.55)}
-  .textarea{min-height:74px;resize:vertical}
-  .calendar-mock{
-    border:1px dashed rgba(255,255,255,.30);
-    border-radius:14px;
-    padding:10px;
-    background:rgba(9,27,60,.18);
-  }
-  .calendar-title{font-size:11px;color:rgba(234,244,255,.80);margin-bottom:8px}
-  .times{
-    display:flex;gap:8px;flex-wrap:wrap
-  }
-  .time-pill{
     font-size:12px;
-    padding:8px 10px;border-radius:12px;
-    border:1px solid rgba(255,255,255,.22);
-    background:rgba(255,255,255,.08);
-    color:#eaf4ff;
-    cursor:pointer;
   }
-  .time-pill.active{background:#fff;color:#0e4b8b;border-color:#fff}
-  .note{
-    margin-top:10px;font-size:11px;line-height:1.4;color:rgba(234,244,255,.75)
+  .anti-row:last-child{border-bottom:none}
+  .anti-issue{color:#B5D4F4;flex:1;line-height:1.35}
+  .anti-badges{display:flex;gap:6px;flex-shrink:0}
+  .anti-badge{
+    font-size:10px;
+    font-weight:700;
+    padding:3px 8px;
+    border-radius:999px;
+    white-space:nowrap;
   }
+  .anti-bad{background:rgba(226,75,74,0.18);color:#F09595}
+  .anti-good{background:rgba(55,138,221,0.22);color:#B5D4F4}
 
-  /* ======= sections in existing site style ======= */
-  .section{padding:26px 22px;border-bottom:1px solid var(--line)}
+  /* ======= Sections (карточки/плитки как у вас) ======= */
+  .section{padding:26px 0;border-bottom:1px solid var(--line)}
   .sec-title{margin:0 0 6px;font-size:18px;letter-spacing:-.2px}
-  .sec-sub{margin:0 0 16px;color:var(--muted);font-size:13px;line-height:1.55;max-width:720px}
+  .sec-sub{margin:0 0 16px;color:var(--muted);font-size:13px;line-height:1.55;max-width:780px}
+
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
   .card{
     background:var(--card);
     border:1px solid var(--line);
-    border-radius:var(--radius);
+    border-radius:16px;
     box-shadow:var(--shadow);
     padding:14px;
-    min-height:108px;
+    min-height:112px;
   }
-  .card h4{margin:0 0 6px;font-size:13px}
-  .card p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
   .icon{
     width:34px;height:34px;border-radius:12px;
     background:rgba(28,103,184,.10);
     border:1px solid rgba(28,103,184,.18);
     display:flex;align-items:center;justify-content:center;
-    color:var(--brand2);font-weight:800;margin-bottom:10px;
+    color:var(--brand2);font-weight:900;margin-bottom:10px;
+    font-size:13px;
   }
+  .card h4{margin:0 0 6px;font-size:13px}
+  .card p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
 
-  /* product tiles like your “Выберите новую платформу…” */
   .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
   .tile{
     border-radius:16px;
@@ -215,21 +200,105 @@
     color:#fff;
   }
 
-  /* project approach (4 steps like your site) */
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-  .step{
-    border:1px solid var(--line);
+  /* ======= Primary booking form (горизонтальная, после 2-го блока) ======= */
+  .reg-wrap{
+    margin-top:14px;
+    background:#042C53;
+    border-radius:18px;
+    padding:18px 18px;
+    color:#eaf4ff;
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 18px 34px rgba(0,0,0,.16);
+  }
+  .reg-head{
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start;margin-bottom:12px;
+  }
+  .reg-title{font-size:16px;font-weight:800;letter-spacing:-.2px}
+  .reg-sub{font-size:12px;line-height:1.55;color:rgba(234,244,255,.85);max-width:720px;margin-top:6px}
+  .reg-badges{display:flex;gap:8px;flex-wrap:wrap}
+  .reg-badge{
+    font-size:10px;font-weight:800;
+    padding:4px 10px;border-radius:999px;
+    border:1px solid rgba(133,183,235,.35);
+    color:#B5D4F4;
+    white-space:nowrap;
+  }
+
+  .reg-form{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .field{display:flex;flex-direction:column;gap:6px}
+  .label{font-size:11px;color:rgba(234,244,255,.82)}
+  .input, .select, .textarea{
+    width:100%;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.08);
+    padding:10px 10px;
+    color:#eaf4ff;
+    outline:none;
+    font-size:13px;
+  }
+  .input::placeholder,.textarea::placeholder{color:rgba(234,244,255,.55)}
+  .textarea{min-height:86px;resize:vertical}
+  .span-2{grid-column: span 2;}
+  .span-4{grid-column: 1 / -1;}
+
+  .calendar-box{
+    border:1px dashed rgba(255,255,255,.28);
+    background:rgba(255,255,255,.06);
     border-radius:14px;
     padding:12px;
-    background:#fff;
   }
-  .step .n{font-size:22px;font-weight:800;color:rgba(28,103,184,.25);margin-bottom:6px}
-  .step h4{margin:0 0 6px;font-size:12px}
+  .calendar-box b{display:block;font-size:12px;margin-bottom:8px}
+  .calendar-box span{display:block;font-size:12px;opacity:.85;line-height:1.45}
+  .slot-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .slot{
+    font-size:12px;font-weight:800;
+    padding:8px 10px;border-radius:12px;
+    border:1px solid rgba(255,255,255,.20);
+    background:rgba(255,255,255,.08);
+    cursor:pointer;
+    user-select:none;
+  }
+  .slot.active{background:#fff;color:#0e4b8b;border-color:#fff}
+
+  .reg-actions{
+    display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px;
+  }
+  .note{font-size:11px;line-height:1.4;color:rgba(234,244,255,.75);max-width:760px}
+  .cta-row{display:flex;gap:10px;flex-wrap:wrap}
+  .btn-solid{
+    background:#fff;color:#0e4b8b;border:none;
+    padding:10px 14px;border-radius:999px;
+    font-weight:900;cursor:pointer;
+  }
+  .btn-outline{
+    background:transparent;color:#d7eeff;
+    border:1px solid rgba(215,238,255,.45);
+    padding:10px 14px;border-radius:999px;
+    font-weight:900;cursor:pointer;
+  }
+
+  /* ======= Deliverables + project approach ======= */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .step{
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:14px;
+    background:#fff;
+    box-shadow:var(--shadow);
+  }
+  .step .n{font-size:22px;font-weight:900;color:rgba(28,103,184,.25);margin-bottom:6px}
+  .step h4{margin:0 0 6px;font-size:13px}
   .step p{margin:0;color:var(--muted);font-size:12px;line-height:1.45}
 
-  /* secondary CTA (video gate) */
+  /* ======= Video gate ======= */
   .gate{
-    background:#ffffff;
+    background:#fff;
     border:1px solid var(--line);
     border-radius:18px;
     box-shadow:var(--shadow);
@@ -252,6 +321,11 @@
     outline:none;
   }
   .gate small{color:var(--muted);font-size:11px;line-height:1.4}
+  .gate-btn{
+    border:none;background:var(--brand);color:#fff;
+    padding:10px 14px;border-radius:999px;
+    font-weight:900;cursor:pointer;
+  }
   .success{
     display:none;
     border-radius:14px;
@@ -262,8 +336,18 @@
     font-size:12px;
     line-height:1.45;
   }
+  .player{
+    display:none;
+    margin-top:10px;
+    border-radius:14px;
+    padding:14px;
+    background:linear-gradient(180deg,#0e4b8b,#1766b6);
+    color:#eaf4ff;
+  }
+  .player b{display:block;margin-bottom:6px;font-size:13px}
+  .player span{font-size:12px;opacity:.9;line-height:1.5}
 
-  /* FAQ */
+  /* ======= FAQ ======= */
   .faq{display:grid;gap:10px}
   details{
     border:1px solid var(--line);
@@ -271,13 +355,13 @@
     padding:12px 12px;
     background:#fff;
   }
-  summary{cursor:pointer;font-weight:700;font-size:13px}
+  summary{cursor:pointer;font-weight:800;font-size:13px}
   summary::-webkit-details-marker{display:none}
   details p{margin:10px 0 0;color:var(--muted);font-size:12px;line-height:1.55}
 
-  /* final CTA band (blue) */
+  /* ======= Final band ======= */
   .final{
-    margin:22px;
+    margin:22px 0 0;
     border-radius:18px;
     padding:18px;
     background:linear-gradient(180deg,#0e4b8b,#1766b6);
@@ -285,13 +369,14 @@
     display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center;
   }
   .final h3{margin:0 0 6px;font-size:16px}
-  .final p{margin:0;color:rgba(234,244,255,.85);font-size:12px;line-height:1.55;max-width:520px}
+  .final p{margin:0;color:rgba(234,244,255,.85);font-size:12px;line-height:1.55;max-width:560px}
   .final .cta{display:flex;gap:10px;flex-wrap:wrap}
 
-  /* footer (упрощённо как у вас) */
+  /* ======= Footer ======= */
   .footer{
     background:#0e4b8b;color:rgba(234,244,255,.88);
     padding:18px 22px;
+    margin-top:18px;
   }
   .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
   .footer h4{margin:0 0 8px;font-size:12px;color:#fff}
@@ -300,7 +385,8 @@
   .footnote{margin-top:12px;font-size:11px;color:rgba(234,244,255,.60)}
 
   /* responsive */
-  @media (max-width: 920px){
+  @media (max-width: 980px){
+    .menu{display:none}
     .hero-inner{grid-template-columns:1fr}
     .cards{grid-template-columns:1fr}
     .tiles{grid-template-columns:1fr}
@@ -308,7 +394,14 @@
     .gate{grid-template-columns:1fr}
     .gate-form .row{grid-template-columns:1fr}
     .footer-grid{grid-template-columns:1fr 1fr}
-    .menu{display:none}
+    .reg-form{grid-template-columns:repeat(2,1fr)}
+    .span-2{grid-column: span 2;}
+  }
+  @media (max-width: 700px){
+    .top-cta{display:none}
+    .footer-grid{grid-template-columns:1fr}
+    .reg-form{grid-template-columns:1fr}
+    .span-2{grid-column: 1 / -1;}
   }
 </style>
 </head>
@@ -316,11 +409,10 @@
 <body>
 <div class="page">
 
-  <!-- MENU (учтён существующий тип: лого + пункты + CTA) -->
+  <!-- NAV -->
   <div class="topbar">
-    <div class="logo"><span class="logo-badge"></span> SIM-Networks</div>
+    <div class="brand"><span class="brand-badge"></span> SIM-Networks</div>
 
-    <!-- пункты меню — оставил максимально универсально, чтобы вписаться в вашу текущую шапку -->
     <nav class="menu" aria-label="Главное меню">
       <a href="#">Продукты и услуги</a>
       <a class="active" href="#">Решения</a>
@@ -339,7 +431,9 @@
   <section class="hero">
     <div class="hero-inner">
       <div>
-        <h1>Инфраструктура для <em>SaaS-продукта</em>: убираем риски downtime и “сюрпризы” в стоимости — за 15–30 минут</h1>
+        <div class="hero-badge">A4 · SaaS / ISV / Software · DACH + Україна</div>
+
+        <h1>Инфраструктура для SaaS-продукта: убираем риски downtime и «сюрпризы» в стоимости — за 15–30 минут</h1>
         <p>
           Бесплатная консультация по выбору/аудиту инфраструктуры для SaaS: latency, масштабирование, безопасность,
           прогнозируемый биллинг и план миграции без простоя. Под DACH + Украину (EU-контур, комплаенс-логика).
@@ -358,312 +452,360 @@
         </div>
       </div>
 
-      <!-- PRIMARY conversion: booking -->
-      <div class="hero-card" id="booking">
-        <h3>Бесплатная консультация</h3>
-        <form class="grid-form" onsubmit="event.preventDefault(); alert('Mockup: заявка отправлена. В реальности здесь будет интеграция календаря/HubSpot.');">
+      <!-- RIGHT: красивый верхний блок (как во 2-м скрине) -->
+      <div class="anti-box">
+        <div class="anti-box-label">Публичное облако vs. SIM-Networks (SaaS)</div>
+
+        <div class="anti-row">
+          <span class="anti-issue">Предсказуемая стоимость (без egress-сюрпризов)</span>
+          <div class="anti-badges">
+            <span class="anti-badge anti-bad">Зависит</span>
+            <span class="anti-badge anti-good">Прозрачно</span>
+          </div>
+        </div>
+
+        <div class="anti-row">
+          <span class="anti-issue">EU/DE контур для DACH сделок (DPA-логика)</span>
+          <div class="anti-badges">
+            <span class="anti-badge anti-bad">Сложно</span>
+            <span class="anti-badge anti-good">Нативно</span>
+          </div>
+        </div>
+
+        <div class="anti-row">
+          <span class="anti-issue">План миграции без простоя (staging → prod)</span>
+          <div class="anti-badges">
+            <span class="anti-badge anti-bad">Риск</span>
+            <span class="anti-badge anti-good">Пошагово</span>
+          </div>
+        </div>
+
+        <div class="anti-row">
+          <span class="anti-issue">Устойчивость (SPOF/Single-AZ) и DR-варианты</span>
+          <div class="anti-badges">
+            <span class="anti-badge anti-bad">Вручную</span>
+            <span class="anti-badge anti-good">План</span>
+          </div>
+        </div>
+
+        <div class="anti-row">
+          <span class="anti-issue">Поддержка 24/7 + SLA/эскалации (в договоре)</span>
+          <div class="anti-badges">
+            <span class="anti-badge anti-bad">Очередь</span>
+            <span class="anti-badge anti-good">Эскалация</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="waves"></div>
+  </section>
+
+  <div class="container">
+
+    <!-- BLOCK #1: карточки “почему консультация полезна” -->
+    <section class="section">
+      <h2 class="sec-title">Почему консультация особенно полезна SaaS-командам</h2>
+      <p class="sec-sub">
+        Это не “про продукт в целом”, а про ваши типовые риски: простои, непредсказуемые счета, безопасность, доступы,
+        миграции и масштабирование. Ниже — 6 причин, которые чаще всего приводят SaaS к аудиту инфраструктуры.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icon">1</div>
+          <h4>Downtime → прямые потери MRR</h4>
+          <p>Фиксируем точки отказа и даём план, как поднять устойчивость без переписывания продукта.</p>
+        </div>
+        <div class="card">
+          <div class="icon">2</div>
+          <h4>«Сюрпризы» в стоимости</h4>
+          <p>Разбираем cost drivers (трафик/egress, storage, managed DB) и как сделать cost predictable.</p>
+        </div>
+        <div class="card">
+          <div class="icon">3</div>
+          <h4>Latency и UX</h4>
+          <p>Подбираем схему размещения/сети под географию пользователей и требования к скорости.</p>
+        </div>
+        <div class="card">
+          <div class="icon">4</div>
+          <h4>Безопасность и доступы</h4>
+          <p>Роли, сегментация, журналы, бэкапы: “audit-ready” без тяжёлого compliance-проекта.</p>
+        </div>
+        <div class="card">
+          <div class="icon">5</div>
+          <h4>Миграция без простоя</h4>
+          <p>Пошаговый план: пилот → параллельный запуск → cut-over с рисками и зависимостями.</p>
+        </div>
+        <div class="card">
+          <div class="icon">6</div>
+          <h4>Dev/Test/Prod без хаоса</h4>
+          <p>Рекомендации по окружениям и операционке (IaC/процессы) в виде next steps.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCK #2: плитки “сценарии” (как у вас “Выберите платформу…”) -->
+    <section class="section">
+      <h2 class="sec-title">Под какие SaaS-сценарии чаще всего нужна консультация</h2>
+      <p class="sec-sub">
+        На консультации подбираем конфигурацию и план: что переносим, что оставляем, где риски и экономия.
+      </p>
+
+      <div class="tiles">
+        <div class="tile dark">
+          <h4>Production SaaS</h4>
+          <p>Аптайм, сеть, безопасность, масштабирование, контроль стоимости.</p>
+          <div class="play">▶</div>
+        </div>
+        <div class="tile">
+          <h4>Staging / Test</h4>
+          <p>Быстрые стенды, изоляция окружений, повторяемость, доступы.</p>
+          <div class="play">▶</div>
+        </div>
+        <div class="tile">
+          <h4>Data layer</h4>
+          <p>Хранилище, бэкапы, ретеншн, скорость восстановления, RTO/RPO.</p>
+          <div class="play">▶</div>
+        </div>
+        <div class="tile">
+          <h4>EU latency для DACH</h4>
+          <p>Сеть, точки размещения, кеширование, CDN-логика (как план).</p>
+          <div class="play">▶</div>
+        </div>
+        <div class="tile dark">
+          <h4>Security / Compliance</h4>
+          <p>GDPR-логика, DPA, доступы, журналы, изоляция.</p>
+          <div class="play">▶</div>
+        </div>
+        <div class="tile">
+          <h4>Migration</h4>
+          <p>Переезд с on-prem/hyperscaler без простоя и с планом отката.</p>
+          <div class="play">▶</div>
+        </div>
+      </div>
+
+      <!-- PRIMARY: горизонтальная форма сразу после 2-го блока -->
+      <div class="reg-wrap" id="booking">
+        <div class="reg-head">
           <div>
+            <div class="reg-title">Бесплатная консультация по инфраструктуре (15–30 минут)</div>
+            <div class="reg-sub">
+              Минимум полей (GDPR-friendly): имя, компания, email, роль, короткий комментарий.
+              Выберите слот — получите инвайт + короткий pre-call чек-лист.
+            </div>
+          </div>
+          <div class="reg-badges">
+            <span class="reg-badge">Deliverables за 24h</span>
+            <span class="reg-badge">POC-план</span>
+            <span class="reg-badge">EU/DACH логика</span>
+          </div>
+        </div>
+
+        <form class="reg-form" onsubmit="return mockBook(event)">
+          <div class="field">
             <div class="label">Имя</div>
             <input class="input" placeholder="Denys" required />
           </div>
-          <div>
-            <div class="label">Email</div>
-            <input class="input" type="email" placeholder="you@company.com" required />
-          </div>
-          <div class="full">
+          <div class="field">
             <div class="label">Компания</div>
             <input class="input" placeholder="Company / URL" required />
           </div>
-          <div>
+          <div class="field">
+            <div class="label">Email</div>
+            <input class="input" type="email" placeholder="you@company.com" required />
+          </div>
+          <div class="field">
             <div class="label">Роль</div>
-            <select class="select">
+            <select class="select" required>
+              <option value="">Выберите…</option>
               <option>CTO / Head of Engineering</option>
               <option>DevOps / SRE</option>
               <option>Founder / CEO</option>
               <option>Product / PM</option>
-            </select>
-          </div>
-          <div>
-            <div class="label">Стадия</div>
-            <select class="select">
-              <option>Есть prod, хотим стабилизировать</option>
-              <option>Готовим масштабирование</option>
-              <option>Планируем миграцию</option>
-              <option>Пока исследуем варианты</option>
+              <option>Security / Compliance</option>
             </select>
           </div>
 
-          <div class="full">
+          <div class="field span-2">
             <div class="label">Короткий комментарий</div>
-            <textarea class="textarea" placeholder="Текущая облачная/серверная схема, болит стоимость/latency/безопасность/миграция..." ></textarea>
+            <input class="input" placeholder="Что болит: cost/latency/security/migration/uptime…" />
           </div>
 
-          <!-- calendar placeholder -->
-          <div class="full calendar-mock">
-            <div class="calendar-title">Выберите удобное время (mockup календаря)</div>
-            <div class="times" id="times">
-              <div class="time-pill active">Сегодня 15:00</div>
-              <div class="time-pill">Сегодня 17:00</div>
-              <div class="time-pill">Завтра 11:00</div>
-              <div class="time-pill">Завтра 16:00</div>
+          <div class="field span-2">
+            <div class="label">Выбор времени (calendar mock)</div>
+            <div class="calendar-box">
+              <b>Календарный виджет (placeholder)</b>
+              <span>В проде: HubSpot/Calendly/встроенный календарь. В мокапе — выбор слота.</span>
+              <div class="slot-row" id="slots">
+                <div class="slot active">Сегодня 15:00</div>
+                <div class="slot">Сегодня 17:00</div>
+                <div class="slot">Завтра 11:00</div>
+                <div class="slot">Завтра 16:00</div>
+              </div>
             </div>
           </div>
 
-          <div class="full" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
-            <button class="btn white" type="submit">Получить инвайт</button>
-            <div class="note">После брони: получите календарный инвайт + короткий pre-call чек-лист. (Mockup, GDPR-friendly поля)</div>
+          <div class="field span-4">
+            <div class="label">Дополнительно (опционально)</div>
+            <textarea class="textarea" placeholder="Стек (k8s/postgres/redis), регионы, требования к SLA, RTO/RPO…"></textarea>
+          </div>
+
+          <div class="reg-actions span-4">
+            <div class="note">
+              После брони: получите календарный инвайт + короткий pre-call чек-лист. (Mockup: данные не отправляются.)
+            </div>
+            <div class="cta-row">
+              <button class="btn-solid" type="submit">Забронировать</button>
+              <button class="btn-outline" type="button" onclick="document.getElementById('video').scrollIntoView({behavior:'smooth'})">Сначала видео</button>
+            </div>
+          </div>
+
+          <div class="success" id="bookSuccess" style="margin-top:10px;">
+            ✅ Готово! Инвайт и pre-call чек-лист “отправлены”. (Mockup-логика)
           </div>
         </form>
       </div>
-    </div>
-    <div class="waves"></div>
-  </section>
+    </section>
 
-  <!-- “Какие возможности…” — как на текущей странице, но SaaS-ориентировано -->
-  <section class="section">
-    <h2 class="sec-title">Почему консультация особенно полезна SaaS-командам</h2>
-    <p class="sec-sub">
-      Это не “про продукт в целом”, а про ваши типовые риски: простои, непредсказуемые счета, безопасность, доступы, миграции и масштабирование.
-      Ниже — 6 причин, которые чаще всего приводят SaaS к аудиту инфраструктуры.
-    </p>
+    <!-- Deliverables -->
+    <section class="section">
+      <h2 class="sec-title">Что вы получите по итогам консультации (deliverables)</h2>
+      <p class="sec-sub">Короткий набор артефактов, который можно отдать CTO/CEO/DevOps и использовать для решения “куда идти дальше”.</p>
 
-    <div class="cards">
-      <div class="card">
-        <div class="icon">1</div>
-        <h4>Downtime → прямые потери MRR</h4>
-        <p>На консультации фиксируем точки отказа и даём план, как поднять устойчивость без переписывания продукта.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="icon">A</div>
+          <h4>1–2 варианта архитектуры</h4>
+          <p>Prod/stage/data, варианты изоляции, сеть, устойчивость и границы ответственности.</p>
+        </div>
+        <div class="card">
+          <div class="icon">B</div>
+          <h4>Risk-карта</h4>
+          <p>Где реальные риски (cost/uptime/security/migration) и что чинить первым.</p>
+        </div>
+        <div class="card">
+          <div class="icon">C</div>
+          <h4>Next steps + оценка</h4>
+          <p>POC-план, роли, сроки, критерии успеха и приблизительная оценка опций.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="icon">2</div>
-        <h4>“Сюрпризы” в стоимости</h4>
-        <p>Разбираем cost drivers (трафик/egress, storage, managed DB), даём варианты прогнозируемого биллинга.</p>
-      </div>
-      <div class="card">
-        <div class="icon">3</div>
-        <h4>Latency и UX</h4>
-        <p>Определяем требования к региону/сети, подбираем схему размещения и кеширования под вашу географию.</p>
-      </div>
-      <div class="card">
-        <div class="icon">4</div>
-        <h4>Безопасность и доступы</h4>
-        <p>Уточняем модель угроз, роли, сегментацию, бэкапы. Снимаем “страх комплаенса” понятными артефактами.</p>
-      </div>
-      <div class="card">
-        <div class="icon">5</div>
-        <h4>Миграция без простоя</h4>
-        <p>Делаем пошаговый план: пилот → параллельный запуск → cut-over, с рисками и зависимостями.</p>
-      </div>
-      <div class="card">
-        <div class="icon">6</div>
-        <h4>Dev/Test/Prod без хаоса</h4>
-        <p>Собираем референс-архитектуру окружений и рекомендации по IaC/операционке (на уровне next steps).</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- “Выберите платформу” — плитки как на сайте -->
-  <section class="section">
-    <h2 class="sec-title">Под какие SaaS-сценарии чаще всего нужна консультация</h2>
-    <p class="sec-sub">Мы не обещаем “волшебную кнопку”. На консультации подбираем конфигурацию и план: что переносим, что оставляем, где риски и экономия.</p>
+    <!-- Project approach (3 шага) -->
+    <section class="section">
+      <h2 class="sec-title">Как проходит консультация (15–30 минут)</h2>
+      <p class="sec-sub">Сбор входных данных → анализ → рекомендации/план. Без “продажных стен”.</p>
 
-    <div class="tiles">
-      <div class="tile dark">
-        <h4>Production SaaS</h4>
-        <p>Аптайм, сеть, безопасность, план масштабирования и cost-контроль.</p>
-        <div class="play">▶</div>
+      <div class="steps">
+        <div class="step">
+          <div class="n">01</div>
+          <h4>Сбор входных данных</h4>
+          <p>Схема, боли, цели, ограничения, SLA/комплаенс-вопросы.</p>
+        </div>
+        <div class="step">
+          <div class="n">02</div>
+          <h4>Короткий анализ</h4>
+          <p>Cost drivers, SPOF/Single-AZ, сеть/latency, data-layer, доступы.</p>
+        </div>
+        <div class="step">
+          <div class="n">03</div>
+          <h4>Рекомендация/план</h4>
+          <p>POC-шаги, риски, таймлайн, “что делать завтра утром”.</p>
+        </div>
       </div>
-      <div class="tile">
-        <h4>Staging / Test</h4>
-        <p>Изоляция окружений, быстрые стенды, повторяемость и доступы.</p>
-        <div class="play">▶</div>
-      </div>
-      <div class="tile">
-        <h4>Data & Analytics</h4>
-        <p>Хранилище, бэкапы, ретеншн, требования к скорости и восстановлению.</p>
-        <div class="play">▶</div>
-      </div>
-      <div class="tile">
-        <h4>Latency for EU users</h4>
-        <p>Сеть, точки присутствия, кеши, CDN-логика (на уровне плана).</p>
-        <div class="play">▶</div>
-      </div>
-      <div class="tile dark">
-        <h4>Security / Compliance</h4>
-        <p>GDPR-логика, DPA, доступы, журналы, изоляция.</p>
-        <div class="play">▶</div>
-      </div>
-      <div class="tile">
-        <h4>Migration</h4>
-        <p>Переезд с on-prem / hyperscaler без простоя и с планом отката.</p>
-        <div class="play">▶</div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Deliverables -->
-  <section class="section">
-    <h2 class="sec-title">Что вы получаете после консультации (deliverables)</h2>
-    <p class="sec-sub">Короткий набор артефактов, который можно отдать CTO/CEO/DevOps и использовать для решения “куда идти дальше”.</p>
+    <!-- Secondary conversion: video gate -->
+    <section class="section" id="video">
+      <h2 class="sec-title">Не готовы к консультации? Посмотрите on-demand видео</h2>
+      <p class="sec-sub">Второй уровень конверсии: видео “кейсы + возможности” → доступ через email-gate.</p>
 
-    <div class="cards">
-      <div class="card">
-        <div class="icon">A</div>
-        <h4>Вариант архитектуры</h4>
-        <p>Схема размещения (prod/stage/data), варианты изоляции и минимальные требования к сети.</p>
-      </div>
-      <div class="card">
-        <div class="icon">B</div>
-        <h4>Опции размещения</h4>
-        <p>Что лучше держать в EU/DE, где допустим multi-region, где нужны быстрые диски/бэкапы.</p>
-      </div>
-      <div class="card">
-        <div class="icon">C</div>
-        <h4>Риски + next steps</h4>
-        <p>Список рисков (downtime/cost/security/migration) + план действий на 2–4 недели.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Project approach (как на вашем сайте) -->
-  <section class="section">
-    <h2 class="sec-title">Как проходит консультация</h2>
-    <p class="sec-sub">15–30 минут. Никаких “продажных стен”. Сбор входных данных → анализ → рекомендации/план.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="n">01</div>
-        <h4>Сбор входных данных</h4>
-        <p>Текущая схема, боли, цели, ограничения (без лишнего).</p>
-      </div>
-      <div class="step">
-        <div class="n">02</div>
-        <h4>Анализ рисков и стоимости</h4>
-        <p>Где “горят” деньги/аптайм, что критично, где быстрые wins.</p>
-      </div>
-      <div class="step">
-        <div class="n">03</div>
-        <h4>Рекомендация</h4>
-        <p>2–3 варианта решения + что проверить на POC.</p>
-      </div>
-      <div class="step">
-        <div class="n">04</div>
-        <h4>План next steps</h4>
-        <p>Сроки, зависимости, минимальный пилот, критерии успеха.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Trust -->
-  <section class="section">
-    <h2 class="sec-title">Trust / Social proof</h2>
-    <p class="sec-sub">Коротко и без перегруза: локация ДЦ, базовый комплаенс, SLA/поддержка. (Точные формулировки — под реальные подтверждения.)</p>
-
-    <div class="cards">
-      <div class="card">
-        <div class="icon">DE</div>
-        <h4>EU/DE размещение</h4>
-        <p>Упаковка под DACH: контроль размещения данных и договорной контур.</p>
-      </div>
-      <div class="card">
-        <div class="icon">24/7</div>
-        <h4>Поддержка</h4>
-        <p>Регламенты реакции и эскалаций (в рамках выбранного уровня сервиса).</p>
-      </div>
-      <div class="card">
-        <div class="icon">SLA</div>
-        <h4>SLA-подход</h4>
-        <p>Фиксируем ожидания по доступности и восстановлению на этапе плана.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Secondary conversion: Video gate -->
-  <section class="section" id="video">
-    <h2 class="sec-title">Не готовы к консультации? Посмотрите on-demand видео</h2>
-    <p class="sec-sub">Видео “кейсы + возможности” — доступ через email-gate (второй уровень конверсии).</p>
-
-    <div class="gate">
-      <div>
-        <h3>Что внутри видео (12–15 минут)</h3>
-        <ul>
-          <li>3 типовых SaaS-сценария (prod/stage/data) и где обычно ломается аптайм</li>
-          <li>Как контролировать стоимость (трафик/egress, storage, управляемые сервисы)</li>
-          <li>План миграции без простоя: пилот → параллельный запуск → cut-over</li>
-        </ul>
-      </div>
-
-      <div class="gate-form">
-        <div class="success" id="gateSuccess">
-          ✅ Доступ отправлен на email (mockup). Если бы это был прод — здесь открывался бы плеер и/или отправлялась ссылка.
+      <div class="gate">
+        <div>
+          <h3>Что внутри (10–15 минут)</h3>
+          <ul>
+            <li>2 коротких кейса: как снизили cost-риски и повысили устойчивость</li>
+            <li>3 типовых SaaS-сценария: prod/stage/data + где обычно ломается аптайм</li>
+            <li>POC-чек-лист: что измерять (latency, cost, RTO/RPO)</li>
+          </ul>
         </div>
 
-        <div class="row">
-          <div>
-            <input id="gateEmail" type="email" placeholder="Email (обязательно)" required />
+        <div class="gate-form">
+          <div class="success" id="gateSuccess">
+            ✅ Ссылка отправлена на email. Для мокапа мы также “открыли” плеер ниже.
           </div>
-          <div>
+
+          <div class="row">
+            <input id="gateEmail" type="email" placeholder="Email (обязательно)" required />
             <input id="gateCompany" type="text" placeholder="Компания (опционально)" />
           </div>
+
+          <button class="gate-btn" id="gateBtn" type="button">Получить доступ</button>
+
+          <div class="player" id="player">
+            <b>On-demand видео (mock player)</b>
+            <span>Здесь будет плеер (Vimeo/YouTube private/unlisted или self-hosted). В мокапе — плейсхолдер.</span>
+          </div>
+
+          <small>
+            Нажимая «Получить доступ», вы соглашаетесь получить ссылку на видео и 1–2 follow-up письма по теме. Отписка — в 1 клик.
+          </small>
         </div>
-
-        <button class="btn primary" id="gateBtn">Получить доступ</button>
-        <small>
-          Нажимая «Получить доступ», вы соглашаетесь получить ссылку на видео и 1–2 письма по теме. Отписка — в 1 клик.
-        </small>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FAQ -->
-  <section class="section">
-    <h2 class="sec-title">FAQ для SaaS</h2>
-    <p class="sec-sub">6–8 вопросов, которые обычно задают CTO/DevOps и procurement.</p>
+    <!-- FAQ -->
+    <section class="section">
+      <h2 class="sec-title">FAQ для SaaS</h2>
+      <p class="sec-sub">Фокус: комплаенс/безопасность/миграции/стоимость/таймлайн.</p>
 
-    <div class="faq">
-      <details>
-        <summary>Сколько длится консультация и что нужно подготовить?</summary>
-        <p>15–30 минут. Достаточно: текущая схема, основные боли (downtime/cost/latency/security), цель на 1–2 месяца.</p>
-      </details>
-      <details>
-        <summary>Это точно бесплатно? Что вы “продаёте” на звонке?</summary>
-        <p>В мокапе: да, бесплатно. Цель — дать план и варианты. Продажи возможны только если вам ок и есть fit.</p>
-      </details>
-      <details>
-        <summary>Поможете с миграцией без простоя?</summary>
-        <p>На консультации выдаём пошаговый план миграции и критерии POC. Реализация — отдельный проект/опция.</p>
-      </details>
-      <details>
-        <summary>Как решаете вопрос комплаенса (GDPR/DPA) для DACH?</summary>
-        <p>Даем рекомендации по размещению и договорному контуру. Конкретные документы — по вашему procurement запросу.</p>
-      </details>
-      <details>
-        <summary>Что с IaC / Terraform / автоматизацией?</summary>
-        <p>На консультации фиксируем требования к автоматизации и предлагаем “минимальный стандарт” для dev/test/prod.</p>
-      </details>
-      <details>
-        <summary>Можно ли сделать гибрид: часть у нас, часть в облаке?</summary>
-        <p>Да. Часто это лучший путь: вынести DR, staging и часть data-нагрузок — без “перенести всё сразу”.</p>
-      </details>
-      <details>
-        <summary>Какие сроки до первого результата?</summary>
-        <p>Обычно: 1–2 недели на POC и проверку гипотез. Далее — план production-перехода.</p>
-      </details>
-    </div>
-  </section>
+      <div class="faq">
+        <details>
+          <summary>Это точно бесплатно? Что вы “продаёте” на звонке?</summary>
+          <p>Да, консультация бесплатна. Цель — дать план и варианты. Коммерческое предложение — только если вам ок и есть fit.</p>
+        </details>
+        <details>
+          <summary>Сколько длится консультация и что подготовить?</summary>
+          <p>15–30 минут. Достаточно: текущая схема и 2–3 боли (cost/uptime/latency/security/migration) + цель на 1–2 месяца.</p>
+        </details>
+        <details>
+          <summary>Можно ли сделать миграцию без простоя?</summary>
+          <p>Да: staged-подход (dev/stage → partial traffic → production) + rollback-план. Консультация как раз про порядок действий.</p>
+        </details>
+        <details>
+          <summary>Как закрываете требования DACH по GDPR/DPA?</summary>
+          <p>Даем рекомендации по размещению и договорному контуру, что показать procurement/security. Конкретные документы — по запросу.</p>
+        </details>
+        <details>
+          <summary>Как убрать “сюрпризы” по стоимости?</summary>
+          <p>Разбираем драйверы (egress/сеть/storage/DB) и варианты predictability: ограничения, архитектурные изменения, подход к данным.</p>
+        </details>
+        <details>
+          <summary>Сколько до первого результата?</summary>
+          <p>Обычно 1–2 недели до POC и проверки гипотез. Далее — план production-перехода с таймлайном и рисками.</p>
+        </details>
+        <details>
+          <summary>Подойдёт ли это для Украины (cross-border устойчивость)?</summary>
+          <p>Да. Часто запрос — EU-контур, DR и релокация критичных данных. Уточняем ограничения и даём практичный план.</p>
+        </details>
+      </div>
 
-  <!-- Final CTA -->
-  <div class="final">
-    <div>
-      <h3>Готовы обсудить вашу SaaS-инфраструктуру?</h3>
-      <p>Забронируйте 15–30 минут. Получите: вариант архитектуры, риски и понятный план next steps для DACH/UA.</p>
-    </div>
-    <div class="cta">
-      <button class="btn white" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Забронировать консультацию</button>
-      <button class="btn ghost" onclick="document.getElementById('video').scrollIntoView({behavior:'smooth'})">Смотреть видео</button>
-    </div>
-  </div>
+      <div class="final">
+        <div>
+          <h3>Готовы обсудить вашу SaaS-инфраструктуру?</h3>
+          <p>Забронируйте 15–30 минут. Получите: вариант архитектуры, риски и понятный план next steps для DACH/UA.</p>
+        </div>
+        <div class="cta">
+          <button class="btn white" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Забронировать консультацию</button>
+          <button class="btn ghost" onclick="document.getElementById('video').scrollIntoView({behavior:'smooth'})">Смотреть видео</button>
+        </div>
+      </div>
+    </section>
 
-  <!-- Footer (типовой) -->
+  </div><!-- /container -->
+
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-grid">
       <div>
@@ -691,21 +833,29 @@
         <a href="#">Заказать звонок</a>
       </div>
     </div>
-    <div class="footnote">МОКАП — A4: SaaS/ISV/Software — Sim-Networks. Только для внутреннего использования.</div>
+    <div class="footnote">МОКАП — A4: SaaS/ISV/Software — SIM-Networks. Только для внутреннего использования.</div>
   </footer>
 
 </div>
 
 <script>
-  // time-pill toggle (calendar mock)
-  document.querySelectorAll('.time-pill').forEach(p=>{
-    p.addEventListener('click', ()=>{
-      document.querySelectorAll('.time-pill').forEach(x=>x.classList.remove('active'));
-      p.classList.add('active');
+  // slot toggle
+  document.querySelectorAll('.slot').forEach(s=>{
+    s.addEventListener('click', ()=>{
+      document.querySelectorAll('.slot').forEach(x=>x.classList.remove('active'));
+      s.classList.add('active');
     });
   });
 
-  // email gate mock behavior
+  function mockBook(e){
+    e.preventDefault();
+    const box = document.getElementById('bookSuccess');
+    box.style.display='block';
+    box.scrollIntoView({behavior:'smooth', block:'center'});
+    return false;
+  }
+
+  // email gate
   document.getElementById('gateBtn').addEventListener('click', ()=>{
     const email = document.getElementById('gateEmail').value.trim();
     if(!email){
@@ -713,8 +863,8 @@
       return;
     }
     document.getElementById('gateSuccess').style.display='block';
-    // имитация открытия плеера/отправки ссылки
-    setTimeout(()=>{ document.getElementById('gateSuccess').scrollIntoView({behavior:'smooth'}); }, 50);
+    document.getElementById('player').style.display='block';
+    document.getElementById('player').scrollIntoView({behavior:'smooth', block:'center'});
   });
 </script>
 </body>
